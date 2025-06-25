@@ -6,46 +6,77 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Justice Obiri-Darko | GIS Portfolio</title>
   <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; max-width: 800px; }
-    h1, h2 { color: #1a73e8; }
-    a { color: #1a73e8; text-decoration: none; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; background: #f4f4f4; color: #333; }
+    .container { max-width: 900px; margin: auto; padding: 20px; background: white; }
+    header { text-align: center; padding: 20px; }
+    img.profile { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; }
+    h1 { margin: 10px 0 5px; color: #1a73e8; }
+    h2 { color: #1a73e8; margin-top: 30px; }
+    ul { padding-left: 20px; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .project { background: #fafafa; border: 1px solid #ddd; padding: 15px; border-radius: 10px; }
+    .project a { color: #1a73e8; text-decoration: none; }
+    form { margin-top: 20px; }
+    label { display: block; margin: 10px 0 5px; }
+    input, textarea { width: 100%; padding: 10px; margin-bottom: 10px; }
+    button { background: #1a73e8; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+    button:hover { background: #155bb5; }
   </style>
 </head>
 <body>
-  <h1>Justice Obiri-Darko</h1>
-  <p><strong>GIS Portfolio</strong></p>
+  <div class="container">
+    <header>
+      <img src="profile.jpg" alt="Justice Obiri-Darko" class="profile" />
+      <h1>Justice Obiri-Darko</h1>
+      <p><strong>Geospatial Engineer & Developer</strong></p>
+    </header>
 
-  <h2>Education</h2>
-  <p>BSc. Geomatics (GIS Concentration), Kwame Nkrumah University of Science and Technology, 2015</p>
+    <h2>About Me</h2>
+    <p>I’m a passionate and motivated GIS professional with experience in spatial data management, geospatial software development, and visualization. I enjoy solving problems using advanced tools in GIS and web mapping.</p>
 
-  <h2>Background</h2>
-  <p>A passionate GIS engineer with a strong foundation in geospatial technologies and a track record of building advanced tools for data analysis and visualization.</p>
+    <h2>Skills</h2>
+    <ul>
+      <li>QGIS, ArcGIS, Leaflet.js, GeoServer</li>
+      <li>PostgreSQL, MySQL, SNAP, QSWAT</li>
+      <li>2D/3D Modelling, Web Maps, Story Maps</li>
+    </ul>
 
-  <h2>Skills</h2>
-  <ul>
-    <li>QGIS, ArcGIS, Leaflet.js, GeoServer</li>
-    <li>PostgreSQL, MySQL, SNAP, QSWAT</li>
-    <li>2D/3D Modelling, Web Maps, Story Maps</li>
-  </ul>
+    <h2>Project Gallery</h2>
+    <div class="gallery">
+      <div class="project">
+        <h3>AU Airline Routes Animation</h3>
+        <a href="https://drive.google.com/open?id=15fJGv5F8x68SxUpqdNEdrVBd7xNa2hxX" target="_blank">View Project</a>
+      </div>
+      <div class="project">
+        <h3>Legon Botanical Gardens Web Map</h3>
+        <a href="http://www.lbgwebmap.com/" target="_blank">Visit Site</a>
+      </div>
+      <div class="project">
+        <h3>Silapha Web Map</h3>
+        <a href="https://geo.silapha.com/silapha_map/" target="_blank">Explore Map</a>
+      </div>
+      <div class="project">
+        <h3>COVID-19 Contact Tracing App</h3>
+        <p>Mobile app for tracking and contact tracing efforts.</p>
+      </div>
+    </div>
 
-  <h2>Work Experience</h2>
-  <ul>
-    <li>Geo-marketing Analyst – Group Vivendi Africa Ghana (Nov 2021 – Present)</li>
-    <li>Geospatial Engineer – Baseline Solutions, GEOMAPS Freelancers</li>
-    <li>GIS Consultant – Nachy Company Limited</li>
-    <li>... and more</li>
-  </ul>
+    <h2>Download My Portfolio</h2>
+    <p><a href="portfolio_justice_.pdf" download>Click to download my full GIS portfolio (PDF)</a></p>
 
-  <h2>Highlighted Projects</h2>
-  <ul>
-    <li><a href="https://drive.google.com/open?id=15fJGv5F8x68SxUpqdNEdrVBd7xNa2hxX">Airline Routes Animation for AU</a></li>
-    <li><a href="http://www.lbgwebmap.com/">Legon Botanical Gardens Web Map</a></li>
-    <li><a href="https://geo.silapha.com/silapha_map/">Silapha Web Map</a></li>
-    <li>COVID-19 Contact Tracing App</li>
-    <li>Revenue & Traffic Data Collection Tools</li>
-  </ul>
+    <h2>Contact Me</h2>
+    <form action="https://formsubmit.co/justiceobiridarko@gmail.com" method="POST">
+      <label for="name">Name</label>
+      <input type="text" name="name" required>
 
-  <p><a href="portfolio_justice_.pdf" download>Download my full portfolio (PDF)</a></p>
-  <p>Contact: justiceobiridarko@gmail.com</p>
+      <label for="email">Email</label>
+      <input type="email" name="email" required>
+
+      <label for="message">Message</label>
+      <textarea name="message" rows="5" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
 </body>
 </html>
