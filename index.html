@@ -1,82 +1,407 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Justice Obiri-Darko | GIS Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; background: #f4f4f4; color: #333; }
-    .container { max-width: 900px; margin: auto; padding: 20px; background: white; }
-    header { text-align: center; padding: 20px; }
-    img.profile { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; }
-    h1 { margin: 10px 0 5px; color: #1a73e8; }
-    h2 { color: #1a73e8; margin-top: 30px; }
-    ul { padding-left: 20px; }
-    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-    .project { background: #fafafa; border: 1px solid #ddd; padding: 15px; border-radius: 10px; }
-    .project a { color: #1a73e8; text-decoration: none; }
-    form { margin-top: 20px; }
-    label { display: block; margin: 10px 0 5px; }
-    input, textarea { width: 100%; padding: 10px; margin-bottom: 10px; }
-    button { background: #1a73e8; color: white; padding: 10px 20px; border: none; cursor: pointer; }
-    button:hover { background: #155bb5; }
+    .gradient-bg {
+      background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .profile-img {
+      border: 5px solid rgba(255,255,255,0.2);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .skill-badge {
+      transition: all 0.3s ease;
+    }
+    .skill-badge:hover {
+      transform: scale(1.05);
+    }
+    #backToTop {
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    #backToTop.show {
+      opacity: 1;
+    }
   </style>
 </head>
-<body>
-  <div class="container">
-    <header>
-      <img src="profile.jpg" alt="Justice Obiri-Darko" class="profile" />
-      <h1>Justice Obiri-Darko</h1>
-      <p><strong>Geospatial Engineer & Developer</strong></p>
-    </header>
-
-    <h2>About Me</h2>
-    <p>I’m a passionate and motivated GIS professional with experience in spatial data management, geospatial software development, and visualization. I enjoy solving problems using advanced tools in GIS and web mapping.</p>
-
-    <h2>Skills</h2>
-    <ul>
-      <li>QGIS, ArcGIS, Leaflet.js, GeoServer</li>
-      <li>PostgreSQL, MySQL, SNAP, QSWAT</li>
-      <li>2D/3D Modelling, Web Maps, Story Maps</li>
-    </ul>
-
-    <h2>Project Gallery</h2>
-    <div class="gallery">
-      <div class="project">
-        <h3>AU Airline Routes Animation</h3>
-        <a href="https://drive.google.com/open?id=15fJGv5F8x68SxUpqdNEdrVBd7xNa2hxX" target="_blank">View Project</a>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="gradient-bg text-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold">Captain Jay</a>
+      <div class="hidden md:flex space-x-8">
+        <a href="#about" class="hover:text-gray-200 transition">About</a>
+        <a href="#skills" class="hover:text-gray-200 transition">Skills</a>
+        <a href="#projects" class="hover:text-gray-200 transition">Projects</a>
+        <a href="#contact" class="hover:text-gray-200 transition">Contact</a>
       </div>
-      <div class="project">
-        <h3>Legon Botanical Gardens Web Map</h3>
-        <a href="http://www.lbgwebmap.com/" target="_blank">Visit Site</a>
-      </div>
-      <div class="project">
-        <h3>Silapha Web Map</h3>
-        <a href="https://geo.silapha.com/silapha_map/" target="_blank">Explore Map</a>
-      </div>
-      <div class="project">
-        <h3>COVID-19 Contact Tracing App</h3>
-        <p>Mobile app for tracking and contact tracing efforts.</p>
+      <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div class="md:hidden hidden bg-blue-900 w-full px-6 py-3" id="mobile-menu">
+      <div class="flex flex-col space-y-3">
+        <a href="#about" class="hover:text-gray-200 transition">About</a>
+        <a href="#skills" class="hover:text-gray-200 transition">Skills</a>
+        <a href="#projects" class="hover:text-gray-200 transition">Projects</a>
+        <a href="#contact" class="hover:text-gray-200 transition">Contact</a>
       </div>
     </div>
+  </nav>
 
-    <h2>Download My Portfolio</h2>
-    <p><a href="portfolio_justice_.pdf" download>Click to download my full GIS portfolio (PDF)</a></p>
+  <!-- Hero Section -->
+  <header class="gradient-bg text-white py-20">
+    <div class="container mx-auto px-6 flex flex-col items-center">
+      <img src="https://via.placeholder.com/150" alt="Justice Obiri-Darko" class="profile-img rounded-full w-40 h-40 object-cover mb-6">
+      <h1 class="text-4xl md:text-5xl font-bold mb-2">Justice Obiri-Darko</h1>
+      <p class="text-xl md:text-2xl mb-6">Geospatial Specialist & Developer</p>
+      <div class="flex space-x-4">
+        <a href="#contact" class="bg-white text-blue-800 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition">Contact Me</a>
+        <a href="portfolio_justice_.pdf" download class="border-2 border-white text-white px-6 py-2 rounded-full font-semibold hover:bg-white hover:text-blue-800 transition">Download CV</a>
+      </div>
+    </div>
+  </header>
 
-    <h2>Contact Me</h2>
-    <form action="https://formsubmit.co/justiceobiridarko@gmail.com" method="POST">
-      <label for="name">Name</label>
-      <input type="text" name="name" required>
+  <!-- Main Content -->
+  <main class="container mx-auto px-6 py-12">
+    <!-- About Section -->
+    <section id="about" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6 flex items-center">
+        <i class="fas fa-user mr-3 text-blue-600"></i> About Me
+      </h2>
+      <div class="bg-white rounded-xl shadow-md p-8">
+        <p class="text-gray-700 mb-6 text-lg">
+          I'm a passionate and motivated GIS professional with experience in spatial data management, geospatial software development, and visualization. I enjoy solving complex spatial problems using advanced GIS tools and web mapping technologies.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-blue-50 p-6 rounded-lg">
+            <i class="fas fa-map-marked-alt text-blue-600 text-3xl mb-3"></i>
+            <h3 class="font-bold text-lg mb-2">Spatial Analysis</h3>
+            <p class="text-gray-600">Expert in spatial data analysis and modeling to derive meaningful insights from geographic data.</p>
+          </div>
+          <div class="bg-blue-50 p-6 rounded-lg">
+            <i class="fas fa-code text-blue-600 text-3xl mb-3"></i>
+            <h3 class="font-bold text-lg mb-2">Web Mapping</h3>
+            <p class="text-gray-600">Skilled in developing interactive web maps and geospatial applications using modern web technologies.</p>
+          </div>
+          <div class="bg-blue-50 p-6 rounded-lg">
+            <i class="fas fa-database text-blue-600 text-3xl mb-3"></i>
+            <h3 class="font-bold text-lg mb-2">Data Management</h3>
+            <p class="text-gray-600">Proficient in spatial database management and optimization for large-scale geospatial datasets.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <label for="email">Email</label>
-      <input type="email" name="email" required>
+    <!-- Skills Section -->
+    <section id="skills" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6 flex items-center">
+        <i class="fas fa-tools mr-3 text-blue-600"></i> Skills
+      </h2>
+      <div class="bg-white rounded-xl shadow-md p-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <h3 class="font-bold text-xl mb-4 text-blue-700">GIS Software</h3>
+            <div class="flex flex-wrap gap-3">
+              <span class="skill-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full">QGIS</span>
+              <span class="skill-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full">ArcGIS</span>
+              <span class="skill-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full">GeoServer</span>
+              <span class="skill-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full">SNAP</span>
+              <span class="skill-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full">QSWAT</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-bold text-xl mb-4 text-blue-700">Web Technologies</h3>
+            <div class="flex flex-wrap gap-3">
+              <span class="skill-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full">Leaflet.js</span>
+              <span class="skill-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full">OpenLayers</span>
+              <span class="skill-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full">JavaScript</span>
+              <span class="skill-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full">HTML/CSS</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-bold text-xl mb-4 text-blue-700">Databases</h3>
+            <div class="flex flex-wrap gap-3">
+              <span class="skill-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full">PostgreSQL</span>
+              <span class="skill-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full">PostGIS</span>
+              <span class="skill-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full">MySQL</span>
+              <span class="skill-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full">Spatialite</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8">
+          <h3 class="font-bold text-xl mb-4 text-blue-700">Other Capabilities</h3>
+          <div class="flex flex-wrap gap-3">
+            <span class="skill-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full">2D/3D Modeling</span>
+            <span class="skill-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full">Web Maps</span>
+            <span class="skill-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full">Story Maps</span>
+            <span class="skill-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full">Data Visualization</span>
+            <span class="skill-badge bg-blue-100 text-blue-800 px-4 py-2 rounded-full">Remote Sensing</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <label for="message">Message</label>
-      <textarea name="message" rows="5" required></textarea>
+    <!-- Projects Section -->
+    <section id="projects" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6 flex items-center">
+        <i class="fas fa-project-diagram mr-3 text-blue-600"></i> Project Gallery
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Project 1 -->
+        <div class="project-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+          <div class="h-48 bg-blue-600 flex items-center justify-center">
+            <i class="fas fa-plane text-white text-6xl"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">AU Airline Routes Animation</h3>
+            <p class="text-gray-600 mb-4">Interactive animation showing airline routes across Africa with temporal visualization.</p>
+            <a href="https://drive.google.com/open?id=15fJGv5F8x68SxUpqdNEdrVBd7xNa2hxX" target="_blank" class="text-blue-600 font-semibold hover:underline flex items-center">
+              View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Project 2 -->
+        <div class="project-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+          <div class="h-48 bg-green-600 flex items-center justify-center">
+            <i class="fas fa-tree text-white text-6xl"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Legon Botanical Gardens Web Map</h3>
+            <p class="text-gray-600 mb-4">Interactive web map showcasing facilities and attractions at Legon Botanical Gardens.</p>
+            <a href="http://www.lbgwebmap.com/" target="_blank" class="text-blue-600 font-semibold hover:underline flex items-center">
+              Visit Site <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Project 3 -->
+        <div class="project-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+          <div class="h-48 bg-purple-600 flex items-center justify-center">
+            <i class="fas fa-map-marked text-white text-6xl"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Silapha Web Map</h3>
+            <p class="text-gray-600 mb-4">Comprehensive web mapping solution for spatial data visualization and analysis.</p>
+            <a href="https://geo.silapha.com/silapha_map/" target="_blank" class="text-blue-600 font-semibold hover:underline flex items-center">
+              Explore Map <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Project 4 -->
+        <div class="project-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+          <div class="h-48 bg-red-600 flex items-center justify-center">
+            <i class="fas fa-virus text-white text-6xl"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">COVID-19 Contact Tracing App</h3>
+            <p class="text-gray-600 mb-4">Mobile application for tracking and contact tracing efforts during the pandemic.</p>
+            <a href="#" class="text-blue-600 font-semibold hover:underline flex items-center">
+              Case Study <i class="fas fa-arrow-right ml-2 text-sm"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Project 5 -->
+        <div class="project-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+          <div class="h-48 bg-yellow-600 flex items-center justify-center">
+            <i class="fas fa-chart-line text-white text-6xl"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Urban Growth Analysis</h3>
+            <p class="text-gray-600 mb-4">Temporal analysis of urban expansion patterns using satellite imagery.</p>
+            <a href="#" class="text-blue-600 font-semibold hover:underline flex items-center">
+              View Analysis <i class="fas fa-arrow-right ml-2 text-sm"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Project 6 -->
+        <div class="project-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+          <div class="h-48 bg-indigo-600 flex items-center justify-center">
+            <i class="fas fa-water text-white text-6xl"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Watershed Modeling</h3>
+            <p class="text-gray-600 mb-4">Hydrological modeling using QSWAT for watershed management planning.</p>
+            <a href="#" class="text-blue-600 font-semibold hover:underline flex items-center">
+              View Project <i class="fas fa-arrow-right ml-2 text-sm"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <button type="submit">Send Message</button>
-    </form>
-  </div>
+    <!-- Contact Section -->
+    <section id="contact" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6 flex items-center">
+        <i class="fas fa-envelope mr-3 text-blue-600"></i> Contact Me
+      </h2>
+      <div class="bg-white rounded-xl shadow-md overflow-hidden">
+        <div class="md:flex">
+          <div class="gradient-bg text-white p-8 md:w-1/3">
+            <h3 class="text-2xl font-bold mb-6">Get In Touch</h3>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <i class="fas fa-envelope mt-1 mr-4"></i>
+                <div>
+                  <h4 class="font-semibold">Email</h4>
+                  <a href="mailto:obiridarkojustice@gmail.com" class="hover:underline">obiridarkojustice@gmail.com</a>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-phone mt-1 mr-4"></i>
+                <div>
+                  <h4 class="font-semibold">Phone</h4>
+                  <p>+233 55 076 7713</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-map-marker-alt mt-1 mr-4"></i>
+                <div>
+                  <h4 class="font-semibold">Location</h4>
+                  <p>Accra, Ghana</p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-8">
+              <h4 class="font-semibold mb-4">Connect With Me</h4>
+              <div class="flex space-x-4">
+                <a href="linkedin.com/in/justice-obiri-darko" class="bg-white text-blue-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100 transition">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/Kukujac" target="_blank" class="bg-white text-blue-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100 transition">
+                    <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="p-8 md:w-2/3">
+            <form action="https://formsubmit.co/obiridarkojustice@gmail.com" method="POST" class="space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label for="name" class="block font-medium text-gray-700 mb-1">Name</label>
+                  <input type="text" name="name" id="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                  <label for="email" class="block font-medium text-gray-700 mb-1">Email</label>
+                  <input type="email" name="email" id="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                </div>
+              </div>
+              <div>
+                <label for="subject" class="block font-medium text-gray-700 mb-1">Subject</label>
+                <input type="text" name="subject" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+              </div>
+              <div>
+                <label for="message" class="block font-medium text-gray-700 mb-1">Message</label>
+                <textarea name="message" id="message" rows="5" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+              </div>
+              <button type="submit" class="gradient-bg text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition flex items-center">
+                <i class="fas fa-paper-plane mr-2"></i> Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="gradient-bg text-white py-8">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <h2 class="text-2xl font-bold">Justice Obiri-Darko</h2>
+          <p>Geospatial Specialist & Developer</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="#about" class="hover:text-gray-200 transition">About</a>
+          <a href="#skills" class="hover:text-gray-200 transition">Skills</a>
+          <a href="#projects" class="hover:text-gray-200 transition">Projects</a>
+          <a href="#contact" class="hover:text-gray-200 transition">Contact</a>
+        </div>
+      </div>
+      <div class="border-t border-blue-400 mt-6 pt-6 text-center">
+        <p>&copy; 2023 Justice Obiri-Darko. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top button -->
+  <button id="backToTop" class="fixed bottom-6 right-6 bg-blue-600 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:bg-blue-700 transition">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+        
+        // Close mobile menu if open
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Back to top button
+    const backToTopButton = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('show');
+      } else {
+        backToTopButton.classList.remove('show');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Add animation to project cards when they come into view
+    const observerOptions = {
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.project-card').forEach(card => {
+      observer.observe(card);
+    });
+  </script>
 </body>
 </html>
