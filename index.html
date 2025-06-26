@@ -228,12 +228,12 @@
     <div class="absolute inset-0 bg-[url('img/gis_image.webp')] bg-cover bg-center z-0"></div>
     <div class="container mx-auto px-6 flex flex-col items-center relative z-20">
       <div class="profile-img rounded-full w-48 h-48 bg-gradient-to-br from-blue-400 to-blue-600 mb-8 overflow-hidden flex items-center justify-center">
-  <img
-     src="img/profile.png"
-     alt="Profile picture"
-    class="w-full h-full object-cover"
-    onerror="this.style.display='none'; this.parentElement.classList.add('justify-center')">
-</div>
+        <img
+           src="img/profile.png"
+           alt="Profile picture"
+          class="w-full h-full object-cover"
+          onerror="this.style.display='none'; this.parentElement.classList.add('justify-center')">
+      </div>
       <h1 class="text-4xl md:text-5xl font-bold mb-3 text-center">Justice Obiri-Darko</h1>
       <p class="text-xl md:text-2xl mb-8 text-center max-w-2xl">Geospatial Specialist | GIS Developer | Spatial Data Analyst</p>
       <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
@@ -396,24 +396,178 @@
     </section>
 
     <!-- Projects Section -->
-<section id="projects" class="mb-20">
-  <div class="flex items-center mb-10">
-    <div class="section-icon">
-      <i class="fas fa-project-diagram text-2xl"></i>
-    </div>
-    <div>
-      <h2 class="text-3xl font-bold text-gray-800">Project Portfolio</h2>
-      <p class="text-gray-600 mt-2">Showcasing my innovative geospatial solutions</p>
-    </div>
-  </div>
-  
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-  <!-- Cocoa Management System -->
+    <section id="projects" class="mb-20">
+      <div class="flex items-center mb-10">
+        <div class="section-icon">
+          <i class="fas fa-project-diagram text-2xl"></i>
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold text-gray-800">Project Portfolio</h2>
+          <p class="text-gray-600 mt-2">Showcasing my innovative geospatial solutions</p>
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Silapha Web Map Project -->
         <div class="project-card">
           <div class="relative">
-            <img src="img/cms.jpg"
-                  alt="Cocoa Farms"
-                  class="project-image">
+            <img src="https://images.unsplash.com/photo-1519996529931-28324d5a630e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
+                 alt="Silapha Web Map" 
+                 class="project-image">
+            <div class="project-overlay">
+              <a href="https://geo.silapha.com/silapha_map/" 
+                 target="_blank" 
+                 class="view-btn flex items-center">
+                View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+              </a>
+            </div>
+          </div>
+          <div class="p-6 flex-grow">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold">Silapha Enterprise Web Map</h3>
+              <span class="tag-government text-xs px-2.5 py-0.5 rounded-full">Enterprise GIS</span>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Developed and managed Silapha's comprehensive web mapping solution for spatial data visualization and analysis. Implemented Geoserver layers, managed spatial data in 3D, and created flood analysis models using QGIS and OSWAT.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geoserver</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">3D Modeling</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Flood Analysis</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- National Railway Asset Information System -->
+        <div class="project-card">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                 alt="Railway Asset System" 
+                 class="project-image">
+            <div class="project-overlay">
+              <a href="https://railmap.daystargeodata.com/" 
+                 target="_blank" 
+                 class="view-btn flex items-center">
+                View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+              </a>
+            </div>
+          </div>
+          <div class="p-6 flex-grow">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold">National Railway Asset System</h3>
+              <span class="tag-infrastructure text-xs px-2.5 py-0.5 rounded-full">Infrastructure</span>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Designed the geodatabase and web map visualization system for Ghana Railway Authority, integrating field-generated data with existing datasets to enhance monitoring and evaluation of national railway assets.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">PostgreSQL</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Web Mapping</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geodatabase</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- COVID-19 Contact Tracing -->
+        <div class="project-card">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80" 
+                 alt="COVID-19 Tracing" 
+                 class="project-image">
+            <div class="project-overlay">
+              <a href="http://safemap.daystargeodata.com/index2.html" 
+                 target="_blank" 
+                 class="view-btn flex items-center">
+                View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+              </a>
+            </div>
+          </div>
+          <div class="p-6 flex-grow">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold">COVID-19 Contact Tracing</h3>
+              <span class="tag-health text-xs px-2.5 py-0.5 rounded-full">Public Health</span>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Developed a comprehensive web mapping solution for the Ghana Institution of Surveyors to visualize COVID-19 cases and potential contact tracing data, featuring a managed geodatabase for real-time pandemic monitoring.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Leaflet.js</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geoserver</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Data Visualization</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geodatabase</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Adoko Farms Project -->
+        <div class="project-card">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1476231682824-37e0bc4606a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                 alt="Adoko Farms" 
+                 class="project-image">
+            <div class="project-overlay">
+              <a href="#" 
+                 class="view-btn flex items-center">
+                View Details <i class="fas fa-arrow-right ml-2 text-sm"></i>
+              </a>
+            </div>
+          </div>
+          <div class="p-6 flex-grow">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold">Adoko Farms Landscape Design</h3>
+              <span class="tag-agriculture text-xs px-2.5 py-0.5 rounded-full">Agriculture</span>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Designed agricultural and recreational landscape maps using GIS technology for Adoko Farms Limited. Conducted topographic surveys and captured aerial imagery with drones for suitability analysis.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Drone Survey</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Topographic Analysis</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Landscape Design</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- HERMES Dynamic Forms -->
+        <div class="project-card">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                 alt="Dynamic Forms" 
+                 class="project-image">
+            <div class="project-overlay">
+              <a href="http://safemap.daystargeodata.com/index6.html" 
+                 target="_blank" 
+                 class="view-btn flex items-center">
+                View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+              </a>
+            </div>
+          </div>
+          <div class="p-6 flex-grow">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold">HERMES Dynamic Forms</h3>
+              <span class="tag-government text-xs px-2.5 py-0.5 rounded-full">Government</span>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Developed a dynamic data collection application for Ghana's Presidency, featuring a web map interface to display inputs from various government institutions and a managed geodatabase for efficient data organization.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">JavaScript</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geodatabase</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Data Collection</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Web Forms</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Cocoa Management System -->
+        <div class="project-card">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1519897831810-a9a01aceccd1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1631&q=80" 
+                 alt="Cocoa Farms" 
+                 class="project-image">
             <div class="project-overlay">
               <a href="#" class="view-btn flex items-center">
                 Case Study <i class="fas fa-arrow-right ml-2 text-sm"></i>
@@ -436,283 +590,9 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
     
-    <!-- Road Traffic Accident Data Collection App -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/traffic.png"
-              alt="Traffic Accident App"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="http://daystargeodata.com:8980/Safecity/"
-              target="_blank"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
-        </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">Road Traffic Accident Data Collection</h3>
-          <span class="tag-transport text-xs px-2.5 py-0.5 rounded-full">Transport</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Developed a mobile app for road traffic accident data collection with web map visualization of accident locations. Designed and managed the geodatabase for reported cases, enabling spatial analysis of accident hotspots and patterns.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Mobile App</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Web Mapping</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geodatabase</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Gumani Teak Plantation Resource Mapping -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/woodsland.png"
-              alt="Teak Plantation"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="#"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
-        </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">Gumani Teak Plantation Mapping</h3>
-          <span class="tag-forestry text-xs px-2.5 py-0.5 rounded-full">Forestry</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Mapped all trees above 4 feet with diameter ≥40cm in the Teak Plantation Reserve for Mulch Company Limited. Conducted boundary surveys and developed a web map for resource management and planning purposes.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Resource Inventory</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Boundary Survey</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Web GIS</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Field Data Collection</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Kokrokoo Charities Road Maps -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/kokrokoo_ga.jpeg"
-              alt="Road Maps"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="#"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
-        </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">Spin for A Cause Road Maps</h3>
-          <span class="tag-community text-xs px-2.5 py-0.5 rounded-full">Community</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Provided GIS consultancy for Kokrokoo Charities' Spin for A Cause project by designing detailed directional road maps. Created optimized routes and navigation aids to support the charity cycling event across multiple locations.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Route Planning</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Cartography</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Event Mapping</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Legon Botanical Gardens Landscape Maps -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/legon.png"
-              alt="Botanical Gardens"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="#"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
-        </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">Botanical Gardens Landscape Maps</h3>
-          <span class="tag-tourism text-xs px-2.5 py-0.5 rounded-full">Tourism</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Designed static and web landscape maps for Legon and KNUST Botanical Gardens for Mulch Company. Conducted topographical surveys and created detailed maps showing vegetation, pathways, and points of interest for visitor navigation.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Landscape Design</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Topographical Survey</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Cartography</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Web GIS</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Liberia Digital Addressing System -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1133&q=80"
-              alt="Digital Addressing"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="#"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
-        </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">Liberia Digital Addressing (ADASL)</h3>
-          <span class="tag-government text-xs px-2.5 py-0.5 rounded-full">Government</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Project managed the Authoritative Digital Addressing System for Liberia (ADASL). Designed the spatial database and generated unique digital addresses for all buildings using PostgreSQL scripts and satellite imagery. Supervised GIS team in digitizing structures.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">PostgreSQL</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Addressing System</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Project Management</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Group Vivendi Africa Geomarketing -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-              alt="Geomarketing"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="#"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
-        </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">Geomarketing Analysis</h3>
-          <span class="tag-business text-xs px-2.5 py-0.5 rounded-full">Business</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Led geomarketing team at Group Vivendi Africa, overseeing market feasibility studies, territorial assessments, and route optimization. Developed standardized qualification tools and managed spatial data collection for infrastructure projects.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Market Analysis</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Route Optimization</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Team Leadership</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS Plugins</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Keep your existing projects here -->
-    <!-- Adoko Farms Project -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/adoko.jpeg"
-              alt="Adoko Farms"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="#"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
-        </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">Adoko Farms Landscape Design</h3>
-          <span class="tag-agriculture text-xs px-2.5 py-0.5 rounded-full">Agriculture</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Designed agricultural and recreational landscape maps using GIS technology for Adoko Farms Limited. Conducted topographic surveys and captured aerial imagery with drones for suitability analysis, creating comprehensive plans for optimal land use and resource allocation.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Drone Survey</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Topographic Analysis</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Landscape Design</span>
-        </div>
-      </div>
-    </div>
-    
-    <!-- National Railway Asset Information System -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/railway.png"
-              alt="Railway Asset System"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="https://railmap.daystargeodata.com/"
-              target="_blank"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
-        </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">National Railway Asset System</h3>
-          <span class="tag-infrastructure text-xs px-2.5 py-0.5 rounded-full">Infrastructure</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Designed the geodatabase and web map visualization system for Ghana Railway Authority, integrating field-generated data with existing datasets to enhance monitoring and evaluation of national railway assets.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">PostgreSQL</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Web Mapping</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geodatabase</span>
-        </div>
-      </div>
-    </div>
-    
-    <!-- COVID-19 Contact Tracing -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/covid.png"
-              alt="COVID-19 Tracing"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="http://safemap.daystargeodata.com/index2.html"
-              target="_blank"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
-        </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">COVID-19 Contact Tracing</h3>
-          <span class="tag-health text-xs px-2.5 py-0.5 rounded-full">Public Health</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Developed a comprehensive web mapping solution for the Ghana Institution of Surveyors to visualize COVID-19 cases and potential contact tracing data, featuring a managed geodatabase for real-time pandemic monitoring.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Leaflet.js</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geoserver</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Data Visualization</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geodatabase</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
     <!-- Experience Section -->
     <section id="experience" class="mb-20">
       <div class="flex items-center mb-10">
@@ -728,30 +608,7 @@
         <div class="relative pl-8">
           <div class="absolute left-0 top-0 bottom-0 w-1 bg-blue-100 rounded-full"></div>
           
-          <!-- NEW: Senior Geospatial Consultant -->
-          <div class="experience-item">
-            <div class="flex flex-wrap justify-between">
-              <h3 class="text-xl font-bold">Senior Geospatial Consultant</h3>
-              <span class="text-blue-600 font-semibold">2023 - Present</span>
-            </div>
-            <p class="text-gray-700 font-semibold">Geospatial Solutions Africa</p>
-            <p class="text-gray-600 mt-3">
-              Leading a team of GIS specialists in delivering complex geospatial solutions for government and private sector clients across West Africa. Providing strategic guidance on GIS implementation, spatial data infrastructure, and digital transformation initiatives.
-            </p>
-          </div>
-          
-          <!-- NEW: GIS Technical Lead -->
-          <div class="experience-item">
-            <div class="flex flex-wrap justify-between">
-              <h3 class="text-xl font-bold">GIS Technical Lead</h3>
-              <span class="text-blue-600 font-semibold">2020 - 2023</span>
-            </div>
-            <p class="text-gray-700 font-semibold">West Africa Geospatial Consortium</p>
-            <p class="text-gray-600 mt-3">
-              Spearheaded the development of regional geospatial standards and best practices. Managed cross-border GIS projects, trained government GIS teams, and implemented quality assurance protocols for spatial data collection and analysis.
-            </p>
-          </div>
-          
+          <!-- Experience 1 -->
           <div class="experience-item">
             <div class="flex flex-wrap justify-between">
               <h3 class="text-xl font-bold">Geo-marketing Analyst & FTTH Designer</h3>
@@ -763,6 +620,31 @@
             </p>
           </div>
           
+          <!-- Experience 2 -->
+          <div class="experience-item">
+            <div class="flex flex-wrap justify-between">
+              <h3 class="text-xl font-bold">Assistant Cartographic Officer</h3>
+              <span class="text-blue-600 font-semibold">2021</span>
+            </div>
+            <p class="text-gray-700 font-semibold">Ghana Cocoa Board</p>
+            <p class="text-gray-600 mt-3">
+              Surveyed cocoa farms for integration into the cocoa management system's geodatabase. Assisted in cartographic design and spatial data management for agricultural planning.
+            </p>
+          </div>
+          
+          <!-- Experience 3 -->
+          <div class="experience-item">
+            <div class="flex flex-wrap justify-between">
+              <h3 class="text-xl font-bold">Geospatial Engineer</h3>
+              <span class="text-blue-600 font-semibold">2021</span>
+            </div>
+            <p class="text-gray-700 font-semibold">Baseline Solutions Limited</p>
+            <p class="text-gray-600 mt-3">
+              Developed a web-based land management system for SSNIT with integrated web mapping capabilities to visualize geospatial data, enhancing land monitoring and evaluation processes.
+            </p>
+          </div>
+          
+          <!-- Experience 4 -->
           <div class="experience-item">
             <div class="flex flex-wrap justify-between">
               <h3 class="text-xl font-bold">Geospatial Engineer & Developer</h3>
@@ -774,18 +656,7 @@
             </p>
           </div>
           
-          <!-- NEW: GIS Trainer -->
-          <div class="experience-item">
-            <div class="flex flex-wrap justify-between">
-              <h3 class="text-xl font-bold">GIS Trainer & Capacity Building Specialist</h3>
-              <span class="text-blue-600 font-semibold">2019 - 2020</span>
-            </div>
-            <p class="text-gray-700 font-semibold">African Geospatial Training Institute</p>
-            <p class="text-gray-600 mt-3">
-              Designed and delivered GIS training programs for professionals across Africa. Developed customized training materials for QGIS, web mapping, and spatial analysis. Conducted needs assessments and created tailored learning paths for government agencies and NGOs.
-            </p>
-          </div>
-          
+          <!-- Experience 5 -->
           <div class="experience-item">
             <div class="flex flex-wrap justify-between">
               <h3 class="text-xl font-bold">GIS Consultant</h3>
@@ -797,6 +668,7 @@
             </p>
           </div>
           
+          <!-- Experience 6 -->
           <div class="experience-item">
             <div class="flex flex-wrap justify-between">
               <h3 class="text-xl font-bold">Head of GIS Department</h3>
@@ -804,7 +676,7 @@
             </div>
             <p class="text-gray-700 font-semibold">Henson Geodata Technologies</p>
             <p class="text-gray-600 mt-3">
-              Managed GIS operations, conducted flood analysis using QGIS and OSWAT, developed 3D spatial data models, and supervised data analysis teams. Managed multiple projects including Liberia's digital addressing system.
+              Managed GIS operations, conducted flood analysis using QGIS and OSWAT, developed 3D spatial data models, and supervised data analysis teams. Designed and managed the Silapha webmap and its Geoserver layers.
             </p>
           </div>
         </div>
@@ -937,11 +809,11 @@
         <div>
           <h3 class="text-xl font-semibold mb-4">Featured Projects</h3>
           <ul class="space-y-3">
-            <li><a href="#" class="text-blue-100 hover:text-white transition">Adoko Farms Landscape Design</a></li>
+            <li><a href="#" class="text-blue-100 hover:text-white transition">Silapha Enterprise Web Map</a></li>
             <li><a href="#" class="text-blue-100 hover:text-white transition">National Railway Asset System</a></li>
             <li><a href="#" class="text-blue-100 hover:text-white transition">COVID-19 Contact Tracing</a></li>
-            <li><a href="#" class="text-blue-100 hover:text-white transition">SSNIT Land Management System</a></li>
-            <li><a href="#" class="text-blue-100 hover:text-white transition">Urban Flood Risk Mapping</a></li>
+            <li><a href="#" class="text-blue-100 hover:text-white transition">Adoko Farms Landscape Design</a></li>
+            <li><a href="#" class="text-blue-100 hover:text-white transition">Cocoa Farm Survey System</a></li>
           </ul>
         </div>
         
