@@ -1248,19 +1248,17 @@
           name: "GIS Engineer",
           company: "Baseline Solutions Limited",
           icon: "fas fa-chart-line"
-        }
+        },
         {
           coords: [5.5577632, -0.2122096],
           name: "Geomarketing Analysis",
           company: "Group Vivendi Africa Ghana",
           icon: "fas fa-chart-line"
-        }
-5.567484044156235, -0.14648123898663623
-        
+        }   
       ];
       
       // Create map centered on all locations
-      const map = L.map('map').setView(myLocation, 12);
+      const map = L.map('map').setView(myLocation, 10);
       
       // Add tile layer (OpenStreetMap)
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -1270,14 +1268,14 @@
       // Add your location marker with profile image
       const myIcon = L.divIcon({
         className: 'custom-marker my-location',
-        iconSize: [40, 40]
+        iconSize: [30, 30]
       });
       
       L.marker(myLocation, {icon: myIcon}).addTo(map)
         .bindPopup(`
           <div class="popup-header">Justice Obiri-Darko</div>
           <div class="popup-company">Geospatial Specialist</div>
-          <div>Accra, Ghana</div>
+          <div>Kasoa, Ghana</div>
         `)
         .openPopup();
       
