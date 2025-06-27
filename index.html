@@ -218,22 +218,33 @@
     }
     
     /* Map styles */
+    .contact-container {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    @media (min-width: 768px) {
+      .contact-container {
+        flex-direction: row;
+      }
+    }
+    
+    .contact-info {
+      flex: 1;
+      padding: 2.5rem;
+    }
+    
+    .map-section {
+      flex: 1;
+      padding: 2.5rem;
+    }
+    
     #map {
+      height: 100%;
+      min-height: 400px;
       border-radius: 12px;
       z-index: 1;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      margin-top: 20px;
-    }
-    .leaflet-popup-content {
-      font-family: 'Open Sans', sans-serif;
-      font-size: 14px;
-    }
-    .leaflet-popup-content-wrapper {
-      border-radius: 8px;
-      box-shadow: 0 3px 14px rgba(0,0,0,0.4);
-    }
-    .map-container {
-      overflow: hidden;
     }
     
     .map-overlay {
@@ -993,8 +1004,8 @@
         </div>
       </div>
       <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
-        <div class="md:flex">
-          <div class="gradient-bg text-white p-10 md:w-2/5">
+        <div class="contact-container">
+          <div class="gradient-bg text-white contact-info">
             <h3 class="text-2xl font-bold mb-8">Let's Connect</h3>
             <div class="space-y-6">
               <div class="flex items-start">
@@ -1040,16 +1051,17 @@
                 </a>
               </div>
             </div>
-                 <div class="p-10 md:w-3/5">
-            <h3 class="text-2xl font-bold text-gray-800 mb-6">Send a Message</h3>
+          </div>
+          
+          <div class="map-section">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">Location Map</h3>
             <!-- Map Container -->
-            <div class="map-container mt-8">
+            <div class="map-container h-full">
               <div class="map-overlay">
                 <i class="fas fa-map-marker-alt mr-2"></i>Office Location in Accra, Ghana
               </div>
               <div id="map"></div>
             </div>
-          </div> 
           </div>
         </div>
       </div>
