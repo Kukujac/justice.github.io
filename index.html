@@ -25,13 +25,27 @@
       font-family: 'Montserrat', sans-serif;
       font-weight: 600;
     }
-    .text-white-stroke {
+    .text-black-stroke {
     -webkit-text-stroke: 1px black;
-    text-stroke: 2px black;
     text-shadow:
     0 0 4px black,
     0 0 8px black,
-    0 0 12px black; 
+    0 0 12px black;
+    animation: pulse-glow 2s infinite ease-in-out;
+    }
+    @keyframes pulse-glow {
+    0%, 100% {
+    text-shadow:
+      0 0 4px black,
+      0 0 8px black,
+      0 0 12px black;
+    }
+    50% {
+    text-shadow:
+      0 0 6px black,
+      0 0 12px black,
+      0 0 18px black;
+      }
     }
     .gradient-bg {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
@@ -241,8 +255,9 @@
           class="w-full h-full object-cover"
           onerror="this.style.display='none'; this.parentElement.classList.add('justify-center')">
       </div>
-      <h1 class="text-4xl md:text-5xl font-bold text-red-550 hover:text-red-600 text-center transition-colors duration-300 inline-block text-black-stroke">
-      Justice Obiri-Darko</h1>
+      <h1 class="text-4xl md:text-5xl font-bold text-red-500 hover:text-red-600 text-center transition-colors duration-300 inline-block text-black-stroke">
+        Justice Obiri-Darko
+        </h1>
         <p class="text-xl md:text-2xl mb-8 text-center max-w-2xl text-green-600 font-bold bg-white/80 px-8 py-4 rounded-full">Geospatial Specialist | GIS Developer | Spatial Data Analyst</p>  
       <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
         <a href="#contact" class="bg-white text-blue-800 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition shadow-lg flex items-center">
