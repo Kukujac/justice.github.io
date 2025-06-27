@@ -7,12 +7,12 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-
+  
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
         crossorigin=""/>
-  
+
   <style>
     :root {
       --primary: #1a73e8;
@@ -25,40 +25,24 @@
       font-family: 'Open Sans', sans-serif;
       color: #333;
       background-color: #f8fafc;
+      scroll-behavior: smooth;
     }
     
     h1, h2, h3, h4, h5, h6 {
       font-family: 'Montserrat', sans-serif;
       font-weight: 600;
     }
-    .text-black-stroke {
-    -webkit-text-stroke: 1.5px #ef4444;
-    text-shadow:
-    0 0 4px white,
-    0 0 8px white,
-    0 0 12px white;
-    animation: pulse-glow 2s infinite ease-in-out;
+    
+    .text-glow {
+      text-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
     }
-    @keyframes pulse-glow {
-    0%, 100% {
-    text-shadow:
-      0 0 4px white,
-      0 0 8px white,
-      0 0 12px white;
-    }
-    50% {
-    text-shadow:
-      0 0 6px white,
-      0 0 12px white,
-      0 0 18px white;
-      }
-    }
+    
     .gradient-bg {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     }
     
     .project-card {
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -66,17 +50,23 @@
       overflow: hidden;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
       background: white;
+      transform: translateY(0);
     }
     
     .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 16px 24px rgba(0, 0, 0, 0.12);
     }
     
     .project-image {
       height: 220px;
       width: 100%;
       object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    
+    .project-card:hover .project-image {
+      transform: scale(1.05);
     }
     
     .project-overlay {
@@ -85,7 +75,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0, 0, 0, 0.6);
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7));
       display: flex;
       align-items: center;
       justify-content: center;
@@ -107,17 +97,24 @@
       display: flex;
       align-items: center;
       font-size: 0.95rem;
+      transform: translateY(10px);
+      opacity: 0;
     }
     
-    .view-btn:hover {
-      background: white;
-      transform: scale(1.05);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    .project-card:hover .view-btn {
+      transform: translateY(0);
+      opacity: 1;
     }
     
     .profile-img {
       border: 5px solid rgba(255, 255, 255, 0.25);
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    
+    .profile-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
     }
     
     .skill-badge {
@@ -126,8 +123,8 @@
     }
     
     .skill-badge:hover {
-      transform: scale(1.05);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
     
     #backToTop {
@@ -151,6 +148,11 @@
       color: white;
       margin-right: 20px;
       box-shadow: 0 4px 8px rgba(26, 115, 232, 0.3);
+      transition: transform 0.3s ease;
+    }
+    
+    .section-icon:hover {
+      transform: rotate(10deg) scale(1.1);
     }
     
     .experience-item {
@@ -226,14 +228,17 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       margin-top: 20px;
     }
+    
     .leaflet-popup-content {
       font-family: 'Open Sans', sans-serif;
       font-size: 14px;
     }
+    
     .leaflet-popup-content-wrapper {
       border-radius: 8px;
       box-shadow: 0 3px 14px rgba(0,0,0,0.4);
     }
+    
     .map-container {
       position: relative;
       margin-top: 25px;
@@ -253,35 +258,125 @@
       font-weight: 600;
       color: var(--primary);
     }
+    
+    /* Animation classes */
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+    
+    .animate-slide-up {
+      animation: slideUp 0.6s ease-out forwards;
+    }
+    
+    .animate-delay-1 {
+      animation-delay: 0.2s;
+    }
+    
+    .animate-delay-2 {
+      animation-delay: 0.4s;
+    }
+    
+    .animate-delay-3 {
+      animation-delay: 0.6s;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+      from { 
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Pulse animation for CTA buttons */
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(26, 115, 232, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(26, 115, 232, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(26, 115, 232, 0);
+      }
+    }
+    
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-dark);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .section-icon {
+        width: 50px;
+        height: 50px;
+        margin-right: 15px;
+      }
+      
+      .experience-item:before {
+        width: 14px;
+        height: 14px;
+      }
+      
+      .experience-item:after {
+        left: 6px;
+      }
+    }
   </style>
 </head>
 <body class="bg-gray-50">
   <!-- Navigation -->
   <nav class="gradient-bg text-white shadow-lg sticky top-0 z-50">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="#" class="text-2xl font-bold flex items-center">
+      <a href="#" class="text-2xl font-bold flex items-center animate-fade-in">
         <i class="fas fa-map-marked-alt mr-2"></i>
         <span>Captain Jay</span>
       </a>
       <div class="hidden md:flex space-x-8">
-        <a href="#about" class="nav-link hover:text-gray-200 transition">About</a>
-        <a href="#skills" class="nav-link hover:text-gray-200 transition">Skills</a>
-        <a href="#projects" class="nav-link hover:text-gray-200 transition">Projects</a>
-        <a href="#experience" class="nav-link hover:text-gray-200 transition">Experience</a>
-        <a href="#contact" class="nav-link hover:text-gray-200 transition">Contact</a>
+        <a href="#about" class="nav-link hover:text-gray-200 transition animate-fade-in animate-delay-1">About</a>
+        <a href="#skills" class="nav-link hover:text-gray-200 transition animate-fade-in animate-delay-2">Skills</a>
+        <a href="#projects" class="nav-link hover:text-gray-200 transition animate-fade-in animate-delay-3">Projects</a>
+        <a href="#experience" class="nav-link hover:text-gray-200 transition animate-fade-in animate-delay-1">Experience</a>
+        <a href="#contact" class="nav-link hover:text-gray-200 transition animate-fade-in animate-delay-2">Contact</a>
       </div>
-      <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+      <button class="md:hidden focus:outline-none animate-fade-in" id="mobile-menu-button">
         <i class="fas fa-bars text-2xl"></i>
       </button>
     </div>
     <!-- Mobile menu -->
     <div class="md:hidden hidden bg-blue-900 w-full px-6 py-4" id="mobile-menu">
       <div class="flex flex-col space-y-4">
-        <a href="#about" class="hover:text-gray-200 transition py-2 border-b border-blue-700">About</a>
-        <a href="#skills" class="hover:text-gray-200 transition py-2 border-b border-blue-700">Skills</a>
-        <a href="#projects" class="hover:text-gray-200 transition py-2 border-b border-blue-700">Projects</a>
-        <a href="#experience" class="hover:text-gray-200 transition py-2 border-b border-blue-700">Experience</a>
-        <a href="#contact" class="hover:text-gray-200 transition py-2">Contact</a>
+        <a href="#about" class="hover:text-gray-200 transition py-2 border-b border-blue-700 animate-slide-up">About</a>
+        <a href="#skills" class="hover:text-gray-200 transition py-2 border-b border-blue-700 animate-slide-up animate-delay-1">Skills</a>
+        <a href="#projects" class="hover:text-gray-200 transition py-2 border-b border-blue-700 animate-slide-up animate-delay-2">Projects</a>
+        <a href="#experience" class="hover:text-gray-200 transition py-2 border-b border-blue-700 animate-slide-up animate-delay-3">Experience</a>
+        <a href="#contact" class="hover:text-gray-200 transition py-2 animate-slide-up animate-delay-1">Contact</a>
       </div>
     </div>
   </nav>
@@ -289,21 +384,24 @@
   <!-- Hero Section -->
   <header class="text-white py-24 relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-r from-blue-900 to-indigo-900 opacity-40 z-10"></div>
-    <div class="absolute inset-0 bg-[url('img/gis_image.webp')] bg-cover bg-center z-0"></div>
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80')] bg-cover bg-center z-0"></div>
     <div class="container mx-auto px-6 flex flex-col items-center relative z-20">
-      <div class="profile-img rounded-full w-48 h-48 bg-gradient-to-br from-blue-400 to-blue-600 mb-8 overflow-hidden flex items-center justify-center">
-        <img
-           src="img/profile.png"
-           alt="Profile picture"
+      <div class="profile-img rounded-full w-48 h-48 bg-gradient-to-br from-blue-400 to-blue-600 mb-8 overflow-hidden flex items-center justify-center animate-slide-up">
+        <img 
+          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+          alt="Profile picture"
           class="w-full h-full object-cover"
           onerror="this.style.display='none'; this.parentElement.classList.add('justify-center')">
       </div>
-      <h1 class="text-4xl md:text-5xl font-bold text-red-500 hover:text-red-600 text-center transition-colors duration-300 inline-block text-black-stroke">
-        Justice Obiri-Darko
-        </h1>
-        <p class="text-xl md:text-2xl mb-8 text-center max-w-2xl text-green-600 font-bold bg-white/90 px-8 py-4 rounded-full">Geospatial Specialist | GIS Developer | Spatial Data Analyst</p>  
-      <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
-        <a href="#contact" class="bg-white text-blue-800 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition shadow-lg flex items-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-center mb-4 animate-slide-up animate-delay-1">
+        <span class="text-white">Justice</span> 
+        <span class="text-red-500 text-glow">Obiri-Darko</span>
+      </h1>
+      <p class="text-xl md:text-2xl mb-8 text-center max-w-2xl text-green-400 font-bold bg-white/90 px-8 py-4 rounded-full animate-slide-up animate-delay-2">
+        <i class="fas fa-map-marker-alt mr-2"></i> Geospatial Specialist | GIS Developer | Spatial Data Analyst
+      </p>
+      <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 animate-slide-up animate-delay-3">
+        <a href="#contact" class="bg-white text-blue-800 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition shadow-lg flex items-center pulse">
           <i class="fas fa-envelope mr-2"></i> Contact Me
         </a>
         <a href="#" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-800 transition flex items-center">
@@ -326,7 +424,7 @@
           <p class="text-gray-600 mt-2">Get to know my professional background and expertise</p>
         </div>
       </div>
-      <div class="bg-white rounded-2xl shadow-xl p-10">
+      <div class="bg-white rounded-2xl shadow-xl p-10 hover:shadow-2xl transition-shadow duration-300">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
           <div class="lg:col-span-2">
             <p class="text-gray-700 mb-6 text-lg leading-relaxed">
@@ -336,7 +434,7 @@
               My expertise spans web map development, spatial database design, drone surveying, and 3D modeling. I'm passionate about creating innovative geospatial solutions that solve real-world problems and drive meaningful insights from spatial data.
             </p>
             <div class="flex flex-wrap gap-4 mt-8">
-              <div class="bg-blue-50 rounded-lg p-4 flex items-center">
+              <div class="bg-blue-50 rounded-lg p-4 flex items-center hover:bg-blue-100 transition">
                 <i class="fas fa-graduation-cap text-blue-600 text-2xl mr-3"></i>
                 <div>
                   <h3 class="font-bold">Education</h3>
@@ -344,7 +442,7 @@
                   <p class="text-sm">Kwame Nkrumah University</p>
                 </div>
               </div>
-              <div class="bg-green-50 rounded-lg p-4 flex items-center">
+              <div class="bg-green-50 rounded-lg p-4 flex items-center hover:bg-green-100 transition">
                 <i class="fas fa-map-marker-alt text-green-600 text-2xl mr-3"></i>
                 <div>
                   <h3 class="font-bold">Location</h3>
@@ -354,7 +452,7 @@
               </div>
             </div>
           </div>
-          <div class="bg-blue-50 rounded-2xl p-8">
+          <div class="bg-blue-50 rounded-2xl p-8 hover:shadow-inner transition">
             <h3 class="font-bold text-xl mb-4 text-blue-800">Core Competencies</h3>
             <ul class="space-y-3">
               <li class="flex items-start">
@@ -406,7 +504,7 @@
           <p class="text-gray-600 mt-2">My expertise in geospatial technologies and tools</p>
         </div>
       </div>
-      <div class="bg-white rounded-2xl shadow-xl p-10">
+      <div class="bg-white rounded-2xl shadow-xl p-10 hover:shadow-2xl transition-shadow duration-300">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <h3 class="font-bold text-xl mb-5 text-blue-700 flex items-center">
@@ -476,13 +574,13 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Silapha Web Map Project -->
         <div class="project-card">
-          <div class="relative">
-            <img src="img/silapha.png" 
-                 alt="Silapha Web Map" 
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                 alt="Silapha Web Map"
                  class="project-image">
             <div class="project-overlay">
-              <a href="https://geo.silapha.com/silapha_map/" 
-                 target="_blank" 
+              <a href="https://geo.silapha.com/silapha_map/"
+                 target="_blank"
                  class="view-btn flex items-center">
                 View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
               </a>
@@ -507,10 +605,10 @@
         
         <!-- Cocoa Management System -->
         <div class="project-card">
-          <div class="relative">
-            <img src="img/cms.jpg"
-                  alt="Cocoa Farms"
-                  class="project-image">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1507537362848-9c7e70b7b5c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                 alt="Cocoa Farms"
+                 class="project-image">
             <div class="project-overlay">
               <a href="#" class="view-btn flex items-center">
                 Case Study <i class="fas fa-arrow-right ml-2 text-sm"></i>
@@ -533,311 +631,312 @@
             </div>
           </div>
         </div>
-    
-    <!-- Road Traffic Accident Data Collection App -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/traffic.png"
-              alt="Traffic Accident App"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="http://daystargeodata.com:8980/Safecity/"
-              target="_blank"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
-        </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">Road Traffic Accident Data Collection</h3>
-          <span class="tag-transport text-xs px-2.5 py-0.5 rounded-full">Transport</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Developed a mobile app for road traffic accident data collection with web map visualization of accident locations. Designed and managed the geodatabase for reported cases, enabling spatial analysis of accident hotspots and patterns.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Mobile App</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Web Mapping</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geodatabase</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
-        </div>
-      </div>
-    </div>
 
-    <!-- Gumani Teak Plantation Resource Mapping -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/woodsland.png"
-              alt="Teak Plantation"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="#"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
-        </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">Gumani Teak Plantation Mapping</h3>
-          <span class="tag-forestry text-xs px-2.5 py-0.5 rounded-full">Forestry</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Mapped all trees above 4 feet with diameter ≥40cm in the Teak Plantation Reserve for Mulch Company Limited. Conducted boundary surveys and developed a web map for resource management and planning purposes.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Resource Inventory</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Boundary Survey</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Web GIS</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Field Data Collection</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Kokrokoo Charities Road Maps -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/kokrokoo_ga.jpeg"
-              alt="Road Maps"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="#"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
-        </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">Spin for A Cause Road Maps</h3>
-          <span class="tag-community text-xs px-2.5 py-0.5 rounded-full">Community</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Provided GIS consultancy for Kokrokoo Charities' Spin for A Cause project by designing detailed directional road maps. Created optimized routes and navigation aids to support the charity cycling event across multiple locations.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Route Planning</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Cartography</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Event Mapping</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Legon Botanical Gardens Landscape Maps -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/legon.png"
-              alt="Botanical Gardens"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="#"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
-        </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">Botanical Gardens Landscape Maps</h3>
-          <span class="tag-tourism text-xs px-2.5 py-0.5 rounded-full">Tourism</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Designed static and web landscape maps for Legon and KNUST Botanical Gardens for Mulch Company. Conducted topographical surveys and created detailed maps showing vegetation, pathways, and points of interest for visitor navigation.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Landscape Design</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Topographical Survey</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Cartography</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Web GIS</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Liberia Digital Addressing System -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/adasl.png"
-              alt="Digital Addressing"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="#"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
-        </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">Liberia Digital Addressing (ADASL)</h3>
-          <span class="tag-government text-xs px-2.5 py-0.5 rounded-full">Government</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Project managed the Authoritative Digital Addressing System for Liberia (ADASL). Designed the spatial database and generated unique digital addresses for all buildings using PostgreSQL scripts and satellite imagery. Supervised GIS team in digitizing structures.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">PostgreSQL</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Addressing System</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Project Management</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Group Vivendi Africa Geomarketing -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-              alt="Geomarketing"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="#"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
-        </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">Geomarketing Analysis</h3>
-          <span class="tag-business text-xs px-2.5 py-0.5 rounded-full">Business</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Led geomarketing team at Group Vivendi Africa, overseeing market feasibility studies, territorial assessments, and route optimization. Developed standardized qualification tools and managed spatial data collection for infrastructure projects.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Market Analysis</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Route Optimization</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Team Leadership</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS Plugins</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Adoko Farms Project -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/adoko.jpeg"
-              alt="Adoko Farms"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="#"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
-        </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">Adoko Farms Landscape Design</h3>
-          <span class="tag-agriculture text-xs px-2.5 py-0.5 rounded-full">Agriculture</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Designed agricultural and recreational landscape maps using GIS technology for Adoko Farms Limited. Conducted topographic surveys and captured aerial imagery with drones for suitability analysis, creating comprehensive plans for optimal land use and resource allocation.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Drone Survey</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Topographic Analysis</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Landscape Design</span>
-        </div>
-      </div>
-    </div>
-    
-    <!-- National Railway Asset Information System -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/railway.png"
-              alt="Railway Asset System"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="https://railmap.daystargeodata.com/"
-              target="_blank"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
-        </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">National Railway Asset System</h3>
-          <span class="tag-infrastructure text-xs px-2.5 py-0.5 rounded-full">Infrastructure</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Designed the geodatabase and web map visualization system for Ghana Railway Authority, integrating field-generated data with existing datasets to enhance monitoring and evaluation of national railway assets.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">PostgreSQL</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Web Mapping</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geodatabase</span>
-        </div>
-      </div>
-    </div>
-    
-    <!-- COVID-19 Contact Tracing -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/covid.png"
-              alt="COVID-19 Tracing"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="http://safemap.daystargeodata.com/index2.html"
-              target="_blank"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
-        </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">COVID-19 Contact Tracing</h3>
-          <span class="tag-health text-xs px-2.5 py-0.5 rounded-full">Public Health</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Developed a comprehensive web mapping solution for the Ghana Institution of Surveyors to visualize COVID-19 cases and potential contact tracing data, featuring a managed geodatabase for real-time pandemic monitoring.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Leaflet.js</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geoserver</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Data Visualization</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geodatabase</span>
-        </div>
-      </div>
-      </div>
-
+        <!-- Road Traffic Accident Data Collection App -->
         <div class="project-card">
-      <div class="relative">
-        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-             alt="Data Management System"
-             class="project-image">
-        <div class="project-overlay">
-          <a href="#" 
-             class="view-btn flex items-center">
-            Case Study <i class="fas fa-arrow-right ml-2 text-sm"></i>
-          </a>
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                 alt="Traffic Accident App"
+                 class="project-image">
+            <div class="project-overlay">
+              <a href="http://daystargeodata.com:8980/Safecity/"
+                 target="_blank"
+                 class="view-btn flex items-center">
+                View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+              </a>
+            </div>
+          </div>
+          <div class="p-6 flex-grow">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold">Road Traffic Accident Data Collection</h3>
+              <span class="tag-transport text-xs px-2.5 py-0.5 rounded-full">Transport</span>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Developed a mobile app for road traffic accident data collection with web map visualization of accident locations. Designed and managed the geodatabase for reported cases, enabling spatial analysis of accident hotspots and patterns.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Mobile App</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Web Mapping</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geodatabase</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">Data Management System Optimization</h3>
-          <span class="tag-infrastructure text-xs px-2.5 py-0.5 rounded-full">Enterprise Systems</span>
+
+        <!-- Gumani Teak Plantation Resource Mapping -->
+        <div class="project-card">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                 alt="Teak Plantation"
+                 class="project-image">
+            <div class="project-overlay">
+              <a href="#"
+                 class="view-btn flex items-center">
+                View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+              </a>
+            </div>
+          </div>
+          <div class="p-6 flex-grow">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold">Gumani Teak Plantation Mapping</h3>
+              <span class="tag-environment text-xs px-2.5 py-0.5 rounded-full">Forestry</span>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Mapped all trees above 4 feet with diameter ≥40cm in the Teak Plantation Reserve for Mulch Company Limited. Conducted boundary surveys and developed a web map for resource management and planning purposes.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Resource Inventory</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Boundary Survey</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Web GIS</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Field Data Collection</span>
+            </div>
+          </div>
         </div>
-        <p class="text-gray-600 mb-4">
-          Transformed data operations at Survtech Engineering by redesigning workflows, implementing training programs, and establishing quality control processes that enhanced team productivity and data reliability across collection and revenue teams.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Workflow Optimization</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Team Training</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Data Analysis</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Process Management</span>
+
+        <!-- Kokrokoo Charities Road Maps -->
+        <div class="project-card">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1502224562085-639556652f33?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                 alt="Road Maps"
+                 class="project-image">
+            <div class="project-overlay">
+              <a href="#"
+                 class="view-btn flex items-center">
+                View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+              </a>
+            </div>
+          </div>
+          <div class="p-6 flex-grow">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold">Spin for A Cause Road Maps</h3>
+              <span class="tag-community text-xs px-2.5 py-0.5 rounded-full">Community</span>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Provided GIS consultancy for Kokrokoo Charities' Spin for A Cause project by designing detailed directional road maps. Created optimized routes and navigation aids to support the charity cycling event across multiple locations.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Route Planning</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Cartography</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Event Mapping</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+
+        <!-- Legon Botanical Gardens Landscape Maps -->
+        <div class="project-card">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1186&q=80"
+                 alt="Botanical Gardens"
+                 class="project-image">
+            <div class="project-overlay">
+              <a href="#"
+                 class="view-btn flex items-center">
+                View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+              </a>
+            </div>
+          </div>
+          <div class="p-6 flex-grow">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold">Botanical Gardens Landscape Maps</h3>
+              <span class="tag-tourism text-xs px-2.5 py-0.5 rounded-full">Tourism</span>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Designed static and web landscape maps for Legon and KNUST Botanical Gardens for Mulch Company. Conducted topographical surveys and created detailed maps showing vegetation, pathways, and points of interest for visitor navigation.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Landscape Design</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Topographical Survey</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Cartography</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Web GIS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Liberia Digital Addressing System -->
+        <div class="project-card">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                 alt="Digital Addressing"
+                 class="project-image">
+            <div class="project-overlay">
+              <a href="#"
+                 class="view-btn flex items-center">
+                View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+              </a>
+            </div>
+          </div>
+          <div class="p-6 flex-grow">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold">Liberia Digital Addressing (ADASL)</h3>
+              <span class="tag-government text-xs px-2.5 py-0.5 rounded-full">Government</span>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Project managed the Authoritative Digital Addressing System for Liberia (ADASL). Designed the spatial database and generated unique digital addresses for all buildings using PostgreSQL scripts and satellite imagery. Supervised GIS team in digitizing structures.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">PostgreSQL</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Addressing System</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Project Management</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Group Vivendi Africa Geomarketing -->
+        <div class="project-card">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                 alt="Geomarketing"
+                 class="project-image">
+            <div class="project-overlay">
+              <a href="#"
+                 class="view-btn flex items-center">
+                View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+              </a>
+            </div>
+          </div>
+          <div class="p-6 flex-grow">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold">Geomarketing Analysis</h3>
+              <span class="tag-business text-xs px-2.5 py-0.5 rounded-full">Business</span>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Led geomarketing team at Group Vivendi Africa, overseeing market feasibility studies, territorial assessments, and route optimization. Developed standardized qualification tools and managed spatial data collection for infrastructure projects.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Market Analysis</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Route Optimization</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Team Leadership</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS Plugins</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Adoko Farms Project -->
+        <div class="project-card">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1500382014318-6e4918ec2284?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                 alt="Adoko Farms"
+                 class="project-image">
+            <div class="project-overlay">
+              <a href="#"
+                 class="view-btn flex items-center">
+                View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+              </a>
+            </div>
+          </div>
+          <div class="p-6 flex-grow">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold">Adoko Farms Landscape Design</h3>
+              <span class="tag-agriculture text-xs px-2.5 py-0.5 rounded-full">Agriculture</span>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Designed agricultural and recreational landscape maps using GIS technology for Adoko Farms Limited. Conducted topographic surveys and captured aerial imagery with drones for suitability analysis, creating comprehensive plans for optimal land use and resource allocation.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Drone Survey</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Topographic Analysis</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Landscape Design</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- National Railway Asset Information System -->
+        <div class="project-card">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1535395153836-3389663bd1a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                 alt="Railway Asset System"
+                 class="project-image">
+            <div class="project-overlay">
+              <a href="https://railmap.daystargeodata.com/"
+                 target="_blank"
+                 class="view-btn flex items-center">
+                View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+              </a>
+            </div>
+          </div>
+          <div class="p-6 flex-grow">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold">National Railway Asset System</h3>
+              <span class="tag-infrastructure text-xs px-2.5 py-0.5 rounded-full">Infrastructure</span>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Designed the geodatabase and web map visualization system for Ghana Railway Authority, integrating field-generated data with existing datasets to enhance monitoring and evaluation of national railway assets.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">PostgreSQL</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Web Mapping</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geodatabase</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- COVID-19 Contact Tracing -->
+        <div class="project-card">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1130&q=80"
+                 alt="COVID-19 Tracing"
+                 class="project-image">
+            <div class="project-overlay">
+              <a href="http://safemap.daystargeodata.com/index2.html"
+                 target="_blank"
+                 class="view-btn flex items-center">
+                View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+              </a>
+            </div>
+          </div>
+          <div class="p-6 flex-grow">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold">COVID-19 Contact Tracing</h3>
+              <span class="tag-health text-xs px-2.5 py-0.5 rounded-full">Public Health</span>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Developed a comprehensive web mapping solution for the Ghana Institution of Surveyors to visualize COVID-19 cases and potential contact tracing data, featuring a managed geodatabase for real-time pandemic monitoring.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Leaflet.js</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geoserver</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Data Visualization</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geodatabase</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Management System -->
+        <div class="project-card">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                alt="Data Management System"
+                class="project-image">
+            <div class="project-overlay">
+              <a href="#"
+                 class="view-btn flex items-center">
+                Case Study <i class="fas fa-arrow-right ml-2 text-sm"></i>
+              </a>
+            </div>
+          </div>
+          <div class="p-6 flex-grow">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold">Data Management System Optimization</h3>
+              <span class="tag-infrastructure text-xs px-2.5 py-0.5 rounded-full">Enterprise Systems</span>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Transformed data operations at Survtech Engineering by redesigning workflows, implementing training programs, and establishing quality control processes that enhanced team productivity and data reliability across collection and revenue teams.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Workflow Optimization</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Team Training</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Data Analysis</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Process Management</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
-    
+
     <!-- Experience Section -->
     <section id="experience" class="mb-20">
       <div class="flex items-center mb-10">
@@ -849,11 +948,11 @@
           <p class="text-gray-600 mt-2">My career journey and professional roles</p>
         </div>
       </div>
-      <div class="bg-white rounded-2xl shadow-xl p-10">
+      <div class="bg-white rounded-2xl shadow-xl p-10 hover:shadow-2xl transition-shadow duration-300">
         <div class="relative pl-8">
           <div class="absolute left-0 top-0 bottom-0 w-1 bg-blue-100 rounded-full"></div>
 
-        <!-- SIG Developer - Group Vivendi Africa -->
+          <!-- SIG Developer - Group Vivendi Africa -->
           <div class="experience-item">
             <div class="flex flex-wrap justify-between">
               <h3 class="text-xl font-bold">SIG Developer</h3>
@@ -870,8 +969,8 @@
               <span class="text-xs bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Field Survey Integration</span>
             </div>
           </div>
-          
-          <!-- Experience 1 -->
+
+          <!-- Geo-marketing Analyst - Group Vivendi Africa -->
           <div class="experience-item">
             <div class="flex flex-wrap justify-between">
               <h3 class="text-xl font-bold">Geo-marketing Analyst & FTTH Designer</h3>
@@ -882,8 +981,8 @@
               Managed field teams for routing, market feasibility, and territorial assessments. Developed custom QGIS tools for data assignment and conducted service coverage analyses. Designed qualification criteria for ISPs/OSPs and ensured spatial data accuracy through rigorous quality control. Worked cross-functionally to embed geospatial intelligence into strategic planning.
             </p>
           </div>
-          
-          <!-- Experience 2 -->
+
+          <!-- Assistant Cartographic Officer -->
           <div class="experience-item">
             <div class="flex flex-wrap justify-between">
               <h3 class="text-xl font-bold">Assistant Cartographic Officer</h3>
@@ -894,8 +993,8 @@
               Surveyed cocoa farms for integration into the cocoa management system's geodatabase. Assisted in cartographic design and spatial data management for agricultural planning.
             </p>
           </div>
-          
-          <!-- Experience 3 -->
+
+          <!-- Geospatial Engineer -->
           <div class="experience-item">
             <div class="flex flex-wrap justify-between">
               <h3 class="text-xl font-bold">Geospatial Engineer</h3>
@@ -906,8 +1005,8 @@
               Developed a web-based land management system for SSNIT with integrated web mapping capabilities to visualize geospatial data, enhancing land monitoring and evaluation processes.
             </p>
           </div>
-          
-          <!-- Experience 4 -->
+
+          <!-- Geospatial Engineer & Developer -->
           <div class="experience-item">
             <div class="flex flex-wrap justify-between">
               <h3 class="text-xl font-bold">Geospatial Engineer & Developer</h3>
@@ -919,40 +1018,28 @@
             </p>
           </div>
 
- <!-- Geo-marketing Analyst - Group Vivendi Africa -->
-        <div class="experience-item">
-          <div class="flex flex-wrap justify-between">
-            <h3 class="text-xl font-bold">Geo-marketing Analyst & FTTH Designer</h3>
-            <span class="text-blue-600 font-semibold">2021 - Nov 2024</span>
+          <!-- Data Manager - Survtech Engineering Limited -->
+          <div class="experience-item">
+            <div class="flex flex-wrap justify-between">
+              <h3 class="text-xl font-bold">Data Manager</h3>
+              <span class="text-blue-600 font-semibold">May 2018 – June 2019</span>
+            </div>
+            <p class="text-gray-700 font-semibold">Survtech Engineering Limited</p>
+            <div class="text-gray-600 mt-3 space-y-2">
+              <p>Led training initiatives for the Data Department, enhancing team capability in data handling and analysis.</p>
+              <p>Supervised and coordinated the activities of both the Data Collection and Revenue Collection teams to ensure efficiency and accuracy.</p>
+              <p>Oversaw end-to-end data analysis processes, ensuring timely and insightful reporting to support operational and strategic goals.</p>
+              <p>Played a key role in streamlining data workflows and maintaining high data integrity standards.</p>
+            </div>
+            <div class="mt-4 grid grid-cols-2 gap-2">
+              <span class="text-xs bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Data Management</span>
+              <span class="text-xs bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Team Leadership</span>
+              <span class="text-xs bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Workflow Optimization</span>
+              <span class="text-xs bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Data Analysis</span>
+            </div>
           </div>
-          <p class="text-gray-700 font-semibold">Group Vivendi Africa</p>
-          <p class="text-gray-600 mt-3">
-            Managed field teams for routing, market feasibility, and territorial assessments. Developed custom QGIS tools for data assignment and conducted service coverage analyses. Designed qualification criteria for ISPs/OSPs and ensured spatial data accuracy through rigorous quality control. Worked cross-functionally to embed geospatial intelligence into strategic planning.
-          </p>
-        </div>
-        
-        <!-- Data Manager - Survtech Engineering Limited (NEW) -->
-        <div class="experience-item">
-          <div class="flex flex-wrap justify-between">
-            <h3 class="text-xl font-bold">Data Manager</h3>
-            <span class="text-blue-600 font-semibold">May 2018 – June 2019</span>
-          </div>
-          <p class="text-gray-700 font-semibold">Survtech Engineering Limited</p>
-          <div class="text-gray-600 mt-3 space-y-2">
-            <p>Led training initiatives for the Data Department, enhancing team capability in data handling and analysis.</p>
-            <p>Supervised and coordinated the activities of both the Data Collection and Revenue Collection teams to ensure efficiency and accuracy.</p>
-            <p>Oversaw end-to-end data analysis processes, ensuring timely and insightful reporting to support operational and strategic goals.</p>
-            <p>Played a key role in streamlining data workflows and maintaining high data integrity standards.</p>
-          </div>
-          <div class="mt-4 grid grid-cols-2 gap-2">
-            <span class="text-xs bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Data Management</span>
-            <span class="text-xs bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Team Leadership</span>
-            <span class="text-xs bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Workflow Optimization</span>
-            <span class="text-xs bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Data Analysis</span>
-          </div>
-        </div>
-          
-          <!-- Experience 5 -->
+
+          <!-- GIS Consultant -->
           <div class="experience-item">
             <div class="flex flex-wrap justify-between">
               <h3 class="text-xl font-bold">GIS Consultant</h3>
@@ -963,8 +1050,8 @@
               Developed revenue data collection applications and topographic maps for municipal assemblies. Created municipal-styled topographic maps and performed spatial data validation.
             </p>
           </div>
-          
-          <!-- Experience 6 -->
+
+          <!-- Head of GIS Department -->
           <div class="experience-item">
             <div class="flex flex-wrap justify-between">
               <h3 class="text-xl font-bold">Head of GIS Department</h3>
@@ -975,12 +1062,11 @@
               Managed GIS operations, conducted flood analysis using QGIS and OSWAT, developed 3D spatial data models, and supervised data analysis teams. Designed and managed the Silapha webmap and its Geoserver layers.
             </p>
             <div class="mt-4 grid grid-cols-2 gap-2">
-            <span class="text-xs bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Data Management</span>
-            <span class="text-xs bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Team Leadership</span>
-            <span class="text-xs bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Workflow Optimization</span>
-            <span class="text-xs bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Data Analysis</span>
               <span class="text-xs bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Webmap Development</span>
-          </div>
+              <span class="text-xs bg-blue-50 text-blue-800 px-3 py-1 rounded-full">3D Modeling</span>
+              <span class="text-xs bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Flood Analysis</span>
+              <span class="text-xs bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Team Leadership</span>
+            </div>
           </div>
         </div>
       </div>
@@ -997,13 +1083,13 @@
           <p class="text-gray-600 mt-2">Get in touch for collaborations or opportunities</p>
         </div>
       </div>
-      <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+      <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
         <div class="md:flex">
           <div class="gradient-bg text-white p-10 md:w-2/5">
             <h3 class="text-2xl font-bold mb-8">Let's Connect</h3>
             <div class="space-y-6">
               <div class="flex items-start">
-                <div class="bg-white text-blue-800 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                <div class="bg-white text-blue-800 w-12 h-12 rounded-full flex items-center justify-center mr-4 hover:rotate-12 transition-transform">
                   <i class="fas fa-envelope text-xl"></i>
                 </div>
                 <div>
@@ -1012,7 +1098,7 @@
                 </div>
               </div>
               <div class="flex items-start">
-                <div class="bg-white text-blue-800 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                <div class="bg-white text-blue-800 w-12 h-12 rounded-full flex items-center justify-center mr-4 hover:rotate-12 transition-transform">
                   <i class="fas fa-phone text-xl"></i>
                 </div>
                 <div>
@@ -1021,36 +1107,45 @@
                 </div>
               </div>
               <div class="flex items-start">
-                <div class="bg-white text-blue-800 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                <div class="bg-white text-blue-800 w-12 h-12 rounded-full flex items-center justify-center mr-4 hover:rotate-12 transition-transform">
                   <i class="fas fa-map-marker-alt text-xl"></i>
                 </div>
                 <div>
                   <h4 class="font-semibold text-lg">Location</h4>
                   <p>Accra, Ghana</p>
+                  <p>Available Worldwide</p>
                 </div>
               </div>
             </div>
-            
-            <!-- Map Container -->
-            <div class="map-container mt-8">
-              <div class="map-overlay">
-                <i class="fas fa-map-marker-alt mr-2"></i>Office Location in Accra, Ghana
-              </div>
-              <div id="map"></div>
-            </div>
-            
+
+
             <div class="mt-8">
               <h4 class="font-semibold mb-6 text-xl">Connect With Me</h4>
               <div class="flex space-x-5">
-                <a href="https://linkedin.com/in/justice-obiri-darko" class="bg-white text-blue-800 w-14 h-14 rounded-full flex items-center justify-center hover:bg-gray-100 transition shadow-lg">
+                <a href="https://linkedin.com/in/justice-obiri-darko" class="bg-white text-blue-800 w-14 h-14 rounded-full flex items-center justify-center hover:bg-gray-100 transition shadow-lg hover:scale-110">
                   <i class="fab fa-linkedin-in text-xl"></i>
                 </a>
-                <a href="#" class="bg-white text-blue-800 w-14 h-14 rounded-full flex items-center justify-center hover:bg-gray-100 transition shadow-lg">
+                <a href="#" class="bg-white text-blue-800 w-14 h-14 rounded-full flex items-center justify-center hover:bg-gray-100 transition shadow-lg hover:scale-110">
                   <i class="fab fa-github text-xl"></i>
                 </a>
-                <a href="#" class="bg-white text-blue-800 w-14 h-14 rounded-full flex items-center justify-center hover:bg-gray-100 transition shadow-lg">
+                <a href="#" class="bg-white text-blue-800 w-14 h-14 rounded-full flex items-center justify-center hover:bg-gray-100 transition shadow-lg hover:scale-110">
                   <i class="fab fa-twitter text-xl"></i>
                 </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Contact Form with Map -->
+          <div class="bg-white p-10 md:w-3/5">
+            <h3 class="text-2xl font-bold mb-8 text-gray-800">Send Me a Message</h3>
+            <div>
+                <!-- Map Container -->
+                <div class="map-container">
+                  <div class="map-overlay">
+                    <i class="fas fa-map-marker-alt mr-2"></i>Office Location in Accra, Ghana
+                  </div>
+                  <div id="map"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -1069,13 +1164,13 @@
           </h2>
           <p class="mb-4 text-blue-100">Geospatial Specialist & Developer creating innovative mapping solutions for complex spatial challenges.</p>
           <div class="flex space-x-4">
-            <a href="#" class="text-blue-100 hover:text-white">
+            <a href="#" class="text-blue-100 hover:text-white hover:scale-125 transition">
               <i class="fab fa-linkedin-in"></i>
             </a>
-            <a href="#" class="text-blue-100 hover:text-white">
+            <a href="#" class="text-blue-100 hover:text-white hover:scale-125 transition">
               <i class="fab fa-github"></i>
             </a>
-            <a href="#" class="text-blue-100 hover:text-white">
+            <a href="#" class="text-blue-100 hover:text-white hover:scale-125 transition">
               <i class="fab fa-twitter"></i>
             </a>
           </div>
@@ -1130,93 +1225,6 @@
   </footer>
 
   <!-- Back to top button -->
-  <button id="backToTop" class="fixed bottom-8 right-8 bg-blue-600 text-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center hover:bg-blue-700 transition">
-    <i class="fas fa-arrow-up"></i>
-  </button>
-
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-        crossorigin=""></script>
-
-  <script>
-    // Initialize Leaflet Map
-    document.addEventListener('DOMContentLoaded', function() {
-      // Coordinates for Accra, Ghana
-      const officeLocation = [5.6037, -0.1870];
-      
-      // Create map
-      const map = L.map('map').setView(officeLocation, 15);
-      
-      // Add tile layer (OpenStreetMap)
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
-      
-      // Add marker
-      const marker = L.marker(officeLocation).addTo(map)
-        .bindPopup('<b>Justice Obiri-Darko</b><br>Geospatial Specialist Office')
-        .openPopup();
-      
-      // Add circle to highlight location
-      L.circle(officeLocation, {
-        color: '#1a73e8',
-        fillColor: '#1a73e8',
-        fillOpacity: 0.2,
-        radius: 200
-      }).addTo(map);
-    });
-  
-    // Mobile menu toggle
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    mobileMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-        
-        // Close mobile menu if open
-        mobileMenu.classList.add('hidden');
-      });
-    });
-
-    // Back to top button
-    const backToTopButton = document.getElementById('backToTop');
-    
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
-        backToTopButton.classList.add('show');
-      } else {
-        backToTopButton.classList.remove('show');
-      }
-    });
-    
-    backToTopButton.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-
-    // Add animation to project cards
-    document.querySelectorAll('.project-card').forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        card.style.transform = 'translateY(-8px)';
-      });
-      
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = 'translateY(0)';
-      });
-    });
-  </script>
+  <button id="backToTop" class="fixed bottom-8 right-8 bg-blue-600 text-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center hover:bg-blue-700 transition hover:scale
 </body>
 </html>
