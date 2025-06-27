@@ -19,44 +19,54 @@
       --primary-dark: #0d47a1;
       --secondary: #34a853;
       --accent: #f9ab00;
+      --text-light: #f8fafc;
+      --text-dark: #333;
+      --text-muted: #666;
     }
     
     body {
       font-family: 'Open Sans', sans-serif;
-      color: #333;
-      background-color: #f8fafc;
+      color: var(--text-dark);
+      background-color: var(--text-light);
+      line-height: 1.6;
     }
     
     h1, h2, h3, h4, h5, h6 {
       font-family: 'Montserrat', sans-serif;
       font-weight: 600;
-    }
-    .text-black-stroke {
-    -webkit-text-stroke: 1.5px #ef4444;
-    text-shadow:
-    0 0 4px white,
-    0 0 8px white,
-    0 0 12px white;
-    animation: pulse-glow 2s infinite ease-in-out;
-    }
-    @keyframes pulse-glow {
-    0%, 100% {
-    text-shadow:
-      0 0 4px white,
-      0 0 8px white,
-      0 0 12px white;
-    }
-    50% {
-    text-shadow:
-      0 0 6px white,
-      0 0 12px white,
-      0 0 18px white;
-      }
-    }
-    .gradient-bg {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      line-height: 1.3;
     }
     
+    .text-black-stroke {
+      -webkit-text-stroke: 1.5px #ef4444;
+      text-shadow:
+        0 0 4px white,
+        0 0 8px white,
+        0 0 12px white;
+      animation: pulse-glow 2s infinite ease-in-out;
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% {
+        text-shadow:
+          0 0 4px white,
+          0 0 8px white,
+          0 0 12px white;
+      }
+      50% {
+        text-shadow:
+          0 0 6px white,
+          0 0 12px white,
+          0 0 18px white;
+      }
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--text-light);
+    }
+    
+    /* Project Cards */
     .project-card {
       transition: all 0.3s ease;
       height: 100%;
@@ -66,6 +76,7 @@
       overflow: hidden;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
       background: white;
+      will-change: transform, box-shadow;
     }
     
     .project-card:hover {
@@ -77,6 +88,11 @@
       height: 220px;
       width: 100%;
       object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .project-card:hover .project-image {
+      transform: scale(1.03);
     }
     
     .project-overlay {
@@ -115,14 +131,22 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
     
+    /* Profile Image */
     .profile-img {
       border: 5px solid rgba(255, 255, 255, 0.25);
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
     }
     
+    .profile-img:hover {
+      transform: scale(1.05);
+    }
+    
+    /* Skills Badges */
     .skill-badge {
       transition: all 0.3s ease;
       font-size: 0.85rem;
+      will-change: transform, box-shadow;
     }
     
     .skill-badge:hover {
@@ -130,6 +154,7 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
     
+    /* Back to Top Button */
     #backToTop {
       opacity: 0;
       transition: all 0.3s ease;
@@ -140,6 +165,7 @@
       opacity: 1;
     }
     
+    /* Section Headers */
     .section-icon {
       background: var(--primary);
       width: 60px;
@@ -153,6 +179,7 @@
       box-shadow: 0 4px 8px rgba(26, 115, 232, 0.3);
     }
     
+    /* Experience Timeline */
     .experience-item {
       position: relative;
       padding-left: 30px;
@@ -188,6 +215,7 @@
       height: 24px;
     }
     
+    /* Project Tags */
     .tag-agriculture { background-color: #e6f4ea; color: #34a853; }
     .tag-infrastructure { background-color: #e8f0fe; color: #1a73e8; }
     .tag-health { background-color: #fce8e6; color: #ea4335; }
@@ -197,6 +225,7 @@
     .tag-education { background-color: #fff8e1; color: #ff8f00; }
     .tag-energy { background-color: #e1f5fe; color: #0288d1; }
     
+    /* Navigation */
     .nav-link {
       position: relative;
       padding-bottom: 5px;
@@ -217,6 +246,7 @@
       width: 100%;
     }
     
+    /* Contact Section */
     .contact-container {
       display: flex;
       flex-direction: column;
@@ -250,22 +280,9 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
     
-    .map-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      padding: 15px;
-      background: rgba(255, 255, 255, 0.9);
-      z-index: 1000;
-      text-align: center;
-      font-weight: 600;
-      color: var(--primary);
-    }
-    
-    /* Updated marker styles for images */
+    /* Map Markers */
     .custom-marker {
-      background-size: contain;
+      background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
       width: 40px;
@@ -274,42 +291,50 @@
       border: 2px solid white;
       box-shadow: 0 2px 5px rgba(0,0,0,0.3);
       transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .custom-marker:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+      z-index: 1000;
     }
     
     .my-location {
       background-image: url('img/profile.png');
-      background-color: #1a73e8;
-      background-size: cover;
+      background-color: var(--primary);
     }
     
     .client-marker {
-      background-size: cover;
-      background-color: #f8fafc;
+      background-color: var(--text-light);
     }
     
-    /* Make sure marker images don't get distorted */
     .marker-image {
       width: 100%;
       height: 100%;
       object-fit: cover;
       border-radius: 50%;
+      image-rendering: -webkit-optimize-contrast;
     }
     
-    /* Popup styling */
+    /* Map Popups */
     .leaflet-popup-content {
       min-width: 200px;
+      margin: 12px;
     }
     
     .popup-header {
       font-weight: bold;
       margin-bottom: 5px;
-      color: var(--primary);
+      color: var(--primary-dark);
       font-size: 1.1rem;
     }
     
     .popup-company {
       font-style: italic;
-      color: #666;
+      color: var(--text-muted);
       margin-bottom: 8px;
     }
     
@@ -320,7 +345,51 @@
       border-radius: 4px;
       margin-bottom: 8px;
     }
-  </style>
+    
+    .map-title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .map-title h3 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary-dark);
+    }
+    
+    .map-title p {
+      color: var(--text-muted);
+    }
+    
+    /* Utility Classes */
+    .transition-all {
+      transition: all 0.3s ease;
+    }
+    
+    .shadow-hover:hover {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    @media (max-width: 767px) {
+      .section-icon {
+        width: 50px;
+        height: 50px;
+        margin-right: 15px;
+      }
+      
+      .project-image {
+        height: 180px;
+      }
+      
+      .contact-container {
+        flex-direction: column;
+      }
+      
+      .contact-info, .map-section {
+        padding: 1.5rem;
+      }
+    }
+</style>
 </head>
 <body class="bg-gray-50">
   <!-- Navigation -->
