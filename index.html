@@ -217,7 +217,6 @@
       width: 100%;
     }
     
-    /* Map styles */
     .contact-container {
       display: flex;
       flex-direction: column;
@@ -237,11 +236,15 @@
     .map-section {
       flex: 1;
       padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     
     #map {
       height: 100%;
       min-height: 400px;
+      width: 100%;
       border-radius: 12px;
       z-index: 1;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -258,6 +261,66 @@
       text-align: center;
       font-weight: 600;
       color: var(--primary);
+    }
+    
+    /* Custom marker styles */
+    .custom-marker {
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      transform: translate(-50%, -50%);
+    }
+    
+    .my-location {
+      background-image: url('img/profile.png');
+      background-color: #1a73e8;
+    }
+    
+    .client-marker {
+      background-color: #34a853;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .client-marker i {
+      color: white;
+      font-size: 20px;
+    }
+    
+    .leaflet-popup-content {
+      min-width: 200px;
+    }
+    
+    .popup-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: var(--primary);
+    }
+    
+    .popup-company {
+      font-style: italic;
+      color: #666;
+    }
+    
+    .map-title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .map-title h3 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary-dark);
+    }
+    
+    .map-title p {
+      color: #666;
     }
   </style>
 </head>
@@ -1054,12 +1117,12 @@
           </div>
           
           <div class="map-section">
-            <h3 class="text-2xl font-bold text-gray-800 mb-6">Location Map</h3>
+            <div class="map-title">
+              <h3>Project Locations</h3>
+              <p>My office and selected client locations</p>
+            </div>
             <!-- Map Container -->
-            <div class="map-container h-full">
-              <div class="map-overlay">
-                <i class="fas fa-map-marker-alt mr-2"></i>Office Location in Accra, Ghana
-              </div>
+            <div class="map-container h-full w-full">
               <div id="map"></div>
             </div>
           </div>
@@ -1151,29 +1214,93 @@
   <script>
     // Initialize Leaflet Map
     document.addEventListener('DOMContentLoaded', function() {
-      // Coordinates for Accra, Ghana
-      const officeLocation = [5.6037, -0.1870];
+      // Coordinates for Accra, Ghana (your location)
+      const myLocation = [5.6037, -0.1870];
       
-      // Create map
-      const map = L.map('map').setView(officeLocation, 15);
+      // Client locations with company info
+      const clientLocations = [
+        {
+          coords: [5.5600, -0.2050],
+          name: "Silapha Enterprise",
+          company: "Web Map Project",
+          icon: "fas fa-map-marked-alt"
+        },
+        {
+          coords: [5.6350, -0.1500],
+          name: "Ghana Cocoa Board",
+          company: "Cocoa Farm Survey",
+          icon: "fas fa-leaf"
+        },
+        {
+          coords: [5.5800, -0.1700],
+          name: "Ghana Railway Authority",
+          company: "Railway Asset System",
+          icon: "fas fa-train"
+        },
+        {
+          coords: [5.6200, -0.2200],
+          name: "Mulch Company",
+          company: "Botanical Gardens Project",
+          icon: "fas fa-tree"
+        },
+        {
+          coords: [5.5500, -0.1900],
+          name: "Group Vivendi Africa",
+          company: "Geomarketing Analysis",
+          icon: "fas fa-chart-line"
+        }
+      ];
+      
+      // Create map centered on all locations
+      const map = L.map('map').setView(myLocation, 12);
       
       // Add tile layer (OpenStreetMap)
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map);
       
-      // Add marker
-      const marker = L.marker(officeLocation).addTo(map)
-        .bindPopup('<b>Justice Obiri-Darko</b><br>Geospatial Specialist Office')
+      // Add your location marker with profile image
+      const myIcon = L.divIcon({
+        className: 'custom-marker my-location',
+        iconSize: [40, 40]
+      });
+      
+      L.marker(myLocation, {icon: myIcon}).addTo(map)
+        .bindPopup(`
+          <div class="popup-header">Justice Obiri-Darko</div>
+          <div class="popup-company">Geospatial Specialist</div>
+          <div>Accra, Ghana</div>
+        `)
         .openPopup();
       
-      // Add circle to highlight location
-      L.circle(officeLocation, {
+      // Add client markers with custom icons
+      clientLocations.forEach(client => {
+        const clientIcon = L.divIcon({
+          className: 'custom-marker client-marker',
+          html: `<i class="${client.icon}"></i>`,
+          iconSize: [40, 40]
+        });
+        
+        L.marker(client.coords, {icon: clientIcon}).addTo(map)
+          .bindPopup(`
+            <div class="popup-header">${client.name}</div>
+            <div class="popup-company">${client.company}</div>
+            <div>Project Location</div>
+          `);
+      });
+      
+      // Add circle to highlight your location
+      L.circle(myLocation, {
         color: '#1a73e8',
         fillColor: '#1a73e8',
         fillOpacity: 0.2,
-        radius: 200
+        radius: 1000
       }).addTo(map);
+      
+      // Fit map to show all markers
+      const bounds = L.latLngBounds([myLocation]);
+      clientLocations.forEach(client => bounds.extend(client.coords));
+      map.fitBounds(bounds, {padding: [50, 50]});
     });
   
     // Mobile menu toggle
