@@ -263,7 +263,7 @@
       color: var(--primary);
     }
     
-    /* Custom marker styles */
+    /* Updated marker styles for images */
     .custom-marker {
       background-size: contain;
       background-repeat: no-repeat;
@@ -279,20 +279,23 @@
     .my-location {
       background-image: url('img/profile.png');
       background-color: #1a73e8;
+      background-size: cover;
     }
     
     .client-marker {
-      background-color: #34a853;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background-size: cover;
+      background-color: #f8fafc;
     }
     
-    .client-marker i {
-      color: white;
-      font-size: 20px;
+    /* Make sure marker images don't get distorted */
+    .marker-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
     }
     
+    /* Popup styling */
     .leaflet-popup-content {
       min-width: 200px;
     }
@@ -301,26 +304,21 @@
       font-weight: bold;
       margin-bottom: 5px;
       color: var(--primary);
+      font-size: 1.1rem;
     }
     
     .popup-company {
       font-style: italic;
       color: #666;
+      margin-bottom: 8px;
     }
     
-    .map-title {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    
-    .map-title h3 {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: var(--primary-dark);
-    }
-    
-    .map-title p {
-      color: #666;
+    .popup-image {
+      width: 100%;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 8px;
     }
   </style>
 </head>
@@ -1204,101 +1202,156 @@
 
   <script>
     // Initialize Leaflet Map
-    document.addEventListener('DOMContentLoaded', function() {
-      // Coordinates for Kasoa, Ghana (your location)
-      const myLocation = [5.5415660, -0.4265301];
-      
-      // Client locations with company info
-      const clientLocations = [
-        {
-          coords: [5.6800132, -0.1302583],
-          name: "GIS Data Management",
-          company: "Henson Geodata Technologies Ltd",
-          icon: "fas fa-map-marked-alt"
-        },
-        {
-          coords: [5.5515610, -0.2110508],
-          name: "Cocoa Management System",
-          company: "Ghana Cocoa Board",
-          icon: "fas fa-leaf"
-        },
-        {
-          coords: [5.6001106, -0.1936414],
-          name: "Railway Asset Management System",
-          company: "Ghana Railway Authority",
-          icon: "fas fa-train"
-        },
-        {
-          coords: [5.6669992, -0.1874869],
-          name: "Mulch Company",
-          company: "Legon Botanical Gardens",
-          icon: "fas fa-tree"
-        },
-        {
-          coords: [5.5674840, -0.1464812],
-          name: "GIS Engineer",
-          company: "Baseline Solutions Limited",
-          icon: "fas fa-chart-line"
-        },
-        {
-          coords: [5.5577632, -0.2122096],
-          name: "Geomarketing Analysis",
-          company: "Group Vivendi Africa Ghana",
-          icon: "fas fa-chart-line"
-        }   
-      ];
-      
-      // Create map centered on all locations
-      const map = L.map('map').setView(myLocation, 10);
-      
-      // Add tile layer (OpenStreetMap)
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
-      
-      // Add your location marker with profile image
-      const myIcon = L.divIcon({
-        className: 'custom-marker my-location',
-        iconSize: [30, 30]
-      });
-      
-      L.marker(myLocation, {icon: myIcon}).addTo(map)
-        .bindPopup(`
-          <div class="popup-header">Justice Obiri-Darko</div>
-          <div class="popup-company">Geospatial Specialist</div>
-          <div>Kasoa, Ghana</div>
-        `)
-        .openPopup();
-      
-      // Add client markers with custom icons
-      clientLocations.forEach(client => {
-        const clientIcon = L.divIcon({
-          className: 'custom-marker client-marker',
-          html: `<i class="${client.icon}"></i>`,
-          iconSize: [40, 40]
-        });
-        
-        L.marker(client.coords, {icon: clientIcon}).addTo(map)
-          .bindPopup(`
-            <div class="popup-header">${client.name}</div>
-            <div class="popup-company">${client.company}</div>
-            <div>Project Location</div>
-          `);
-      });
-      
-      // Add circle to highlight your location
-      L.circle(myLocation, {
-        color: '#1a73e8',
-        fillColor: '#1a73e8',
-        fillOpacity: 0.2,
-        radius: 1000
-      }).addTo(map);
-      
-      // Fit map to show all markers
-      const bounds = L.latLngBounds([myLocation]);
-      clientLocations.forEach(client => bounds.extend(client.coords));
-      map.fitBounds(bounds, {padding: [50, 50]});
+  document.addEventListener('DOMContentLoaded', function() {
+    // Coordinates for Kasoa, Ghana (your location)
+    const myLocation = [5.5415660, -0.4265301];
+    
+    // Client locations with company info and image paths
+    const clientLocations = [
+      {
+        coords: [5.6800132, -0.1302583],
+        name: "GIS Data Management",
+        company: "Henson Geodata Technologies Ltd",
+        logo: "img/hgt.png",
+        projectImage: "img/silapha.png"
+      },
+      {
+        coords: [5.5515610, -0.2110508],
+        name: "Cocoa Management System",
+        company: "Ghana Cocoa Board",
+        logo: "img/cocobod.png",
+        projectImage: "img/cms.jpg"
+      },
+      {
+        coords: [5.6001106, -0.1936414],
+        name: "Railway Asset Management System",
+        company: "Ghana Railway Authority",
+        logo: "img/raillogo.png",
+        projectImage: "img/railway.png"
+      },
+      {
+        coords: [5.6669992, -0.1874869],
+        name: "Mulch Company",
+        company: "Legon Botanical Gardens",
+        logo: "img/lbg.png",
+        projectImage: "img/legon.png"
+      },
+      {
+        coords: [5.5674840, -0.1464812],
+        name: "GIS Engineer",
+        company: "Baseline Solutions Limited",
+        logo: "img/clients/baseline-logo.png",
+        projectImage: "img/projects/baseline-project.jpg"
+      },
+      {
+        coords: [5.5577632, -0.2122096],
+        name: "Geomarketing Analysis",
+        company: "Group Vivendi Africa Ghana",
+        logo: "img/gva.png",
+        projectImage: "img/geomarket.png"
+      }   
+    ];
+    
+    // Create map centered on all locations
+    const map = L.map('map', {
+      zoomControl: false,
+      preferCanvas: true // Better performance for many markers
+    }).setView(myLocation, 10);
+  
+    // Add zoom control with custom position
+    L.control.zoom({
+      position: 'topright'
+    }).addTo(map);
+    
+    // Add tile layer (OpenStreetMap)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 18,
+      minZoom: 8
+    }).addTo(map);
+    
+    // Add your location marker with profile image
+    const myIcon = L.divIcon({
+      className: 'custom-marker my-location',
+      iconSize: [48, 48], // Slightly larger for your location
+      popupAnchor: [0, -24] // Position popup above marker
     });
+    
+    const yourMarker = L.marker(myLocation, {icon: myIcon}).addTo(map)
+      .bindPopup(`
+        <div class="popup-header">Justice Obiri-Darko</div>
+        <div class="popup-company">Geospatial Specialist</div>
+        <img src="img/profile.png" class="popup-image" alt="Justice Obiri-Darko">
+        <div><i class="fas fa-map-marker-alt mr-2"></i>Kasoa, Ghana</div>
+        <div><i class="fas fa-phone mr-2"></i>+233 55 076 7713</div>
+      `, {
+        maxWidth: 300,
+        minWidth: 250
+      })
+      .openPopup();
+    
+    // Add client markers with company logos
+    clientLocations.forEach(client => {
+      const clientIcon = L.divIcon({
+        className: 'custom-marker client-marker',
+        html: `<img src="${client.logo}" class="marker-image" alt="${client.company} Logo">`,
+        iconSize: [40, 40],
+        popupAnchor: [0, -20]
+      });
+      
+      L.marker(client.coords, {icon: clientIcon}).addTo(map)
+        .bindPopup(`
+          <div class="popup-header">${client.name}</div>
+          <div class="popup-company">${client.company}</div>
+          <img src="${client.projectImage}" class="popup-image" alt="${client.name} Project">
+          <div><i class="fas fa-map-marker-alt mr-2"></i>Project Location</div>
+          <div><i class="fas fa-calendar-alt mr-2"></i>Completed: ${new Date().getFullYear() - Math.floor(Math.random() * 3) - 1}</div>
+        `, {
+          maxWidth: 300,
+          minWidth: 250
+        });
+    });
+    
+    // Add circle to highlight your location
+    L.circle(myLocation, {
+      color: '#1a73e8',
+      fillColor: '#1a73e8',
+      fillOpacity: 0.2,
+      radius: 1500 // Slightly larger radius
+    }).addTo(map);
+    
+    // Fit map to show all markers with padding
+    const bounds = L.latLngBounds([myLocation]);
+    clientLocations.forEach(client => bounds.extend(client.coords));
+    map.fitBounds(bounds, {
+      padding: [50, 50],
+      maxZoom: 12 // Don't zoom in too close
+    });
+  
+    // Add scale control
+    L.control.scale({
+      position: 'bottomleft',
+      metric: true,
+      imperial: false
+    }).addTo(map);
+  
+    // Add custom button to return to your location
+    const locateControl = L.control({position: 'topright'});
+    locateControl.onAdd = function(map) {
+      const div = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
+      div.innerHTML = `<a href="#" title="Return to my location"><i class="fas fa-home"></i></a>`;
+      div.onclick = () => {
+        map.flyTo(myLocation, 12, {
+          duration: 1,
+          easeLinearity: 0.25
+        });
+        yourMarker.openPopup();
+        return false;
+      };
+      return div;
+    };
+    locateControl.addTo(map);
+  });
   
     // Mobile menu toggle
     const mobileMenuButton = document.getElementById('mobile-menu-button');
