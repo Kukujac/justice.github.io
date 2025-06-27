@@ -210,6 +210,43 @@
     .nav-link:hover:after {
       width: 100%;
     }
+    
+    /* Map styles */
+    #map {
+      height: 300px;
+      width: 100%;
+      border-radius: 12px;
+      z-index: 1;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+    .leaflet-popup-content {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+    }
+    .leaflet-popup-content-wrapper {
+      border-radius: 8px;
+      box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+    }
+    .map-container {
+      position: relative;
+      margin-top: 25px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    
+    .map-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.9);
+      z-index: 1000;
+      text-align: center;
+      font-weight: 600;
+      color: var(--primary);
+    }
   </style>
 </head>
 <body class="bg-gray-50">
@@ -1108,7 +1145,39 @@
     <i class="fas fa-arrow-up"></i>
   </button>
 
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+
   <script>
+    // Initialize Leaflet Map
+    document.addEventListener('DOMContentLoaded', function() {
+      // Coordinates for Accra, Ghana
+      const officeLocation = [5.6037, -0.1870];
+      
+      // Create map
+      const map = L.map('map').setView(officeLocation, 15);
+      
+      // Add tile layer (OpenStreetMap)
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+      
+      // Add marker
+      const marker = L.marker(officeLocation).addTo(map)
+        .bindPopup('<b>Justice Obiri-Darko</b><br>Geospatial Specialist Office')
+        .openPopup();
+      
+      // Add circle to highlight location
+      L.circle(officeLocation, {
+        color: '#1a73e8',
+        fillColor: '#1a73e8',
+        fillOpacity: 0.2,
+        radius: 200
+      }).addTo(map);
+    });
+  
     // Mobile menu toggle
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
