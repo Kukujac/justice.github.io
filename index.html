@@ -712,35 +712,66 @@
         </div>
       </div>
 
-      <!-- Gumani Teak Plantation Resource Mapping -->
+      <!-- COVID-19 Contact Tracing -->
+        <div class="project-card">
+          <div class="relative">
+            <img src="img/covid.png"
+                  alt="COVID-19 Tracing"
+                  class="project-image">
+            <div class="project-overlay">
+              <a href="http://safemap.daystargeodata.com/index2.html"
+                  target="_blank"
+                  class="view-btn flex items-center">
+                View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+              </a>
+            </div>
+          </div>
+          <div class="p-6 flex-grow">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold">COVID-19 Contact Tracing</h3>
+              <span class="tag-health text-xs px-2.5 py-0.5 rounded-full">Public Health</span>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Developed a comprehensive web mapping solution for the Ghana Institution of Surveyors.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Leaflet.js</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geoserver</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Data Visualization</span>
+            </div>
+          </div>
+        </div>
+
+      <!-- SSNIT Land Management System -->
       <div class="project-card">
         <div class="relative">
-          <img src="img/woodsland.png"
-                alt="Teak Plantation"
-                class="project-image">
+          <img src="img/ssnit.jpeg"  <!-- You'll need to add this image -->
+               alt="SSNIT Land Management"
+               class="project-image">
           <div class="project-overlay">
-            <a href="#"
-                class="view-btn flex items-center">
+            <a href="#"  <!-- Add link if available -->
+               class="view-btn flex items-center">
               View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
             </a>
           </div>
         </div>
         <div class="p-6 flex-grow">
           <div class="flex justify-between items-start mb-3">
-            <h3 class="text-xl font-bold">Gumani Teak Plantation Mapping</h3>
-            <span class="tag-forestry text-xs px-2.5 py-0.5 rounded-full">Forestry</span>
+            <h3 class="text-xl font-bold">SSNIT Land Management System</h3>
+            <span class="tag-government text-xs px-2.5 py-0.5 rounded-full">Government</span>
           </div>
           <p class="text-gray-600 mb-4">
-            Mapped all trees above 4 feet with diameter ≥40cm in the Teak Plantation Reserve for Mulch Company Limited.
+            Designed and deployed a web-based Land Management System to improve transparency and governance of SSNIT's national land assets with real-time geospatial visualization capabilities.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Resource Inventory</span>
-            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Boundary Survey</span>
             <span class="text-xs bg-gray-100 px-2 py-1 rounded">Web GIS</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Land Administration</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Spatial Database</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Compliance Reporting</span>
           </div>
         </div>
       </div>
-
+      
       <!-- Kokrokoo Charities Road Maps -->
       <div class="project-card">
         <div class="relative">
@@ -769,8 +800,10 @@
           </div>
         </div>
       </div>
-
-      <!-- Legon Botanical Gardens Landscape Maps -->
+    
+    <!-- Remaining Projects Container (hidden initially) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden" id="remaining-projects">
+    <!-- Legon Botanical Gardens Landscape Maps -->
       <div class="project-card">
         <div class="relative">
           <img src="img/legon.png"
@@ -799,9 +832,7 @@
         </div>
       </div>
     </div>
-    
-    <!-- Remaining Projects Container (hidden initially) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden" id="remaining-projects">
+      
       <!-- Liberia Digital Addressing System -->
       <div class="project-card">
         <div class="relative">
@@ -918,16 +949,15 @@
           </div>
         </div>
       </div>
-      
-      <!-- COVID-19 Contact Tracing -->
+
+    <!-- Gumani Teak Plantation Resource Mapping -->
       <div class="project-card">
         <div class="relative">
-          <img src="img/covid.png"
-                alt="COVID-19 Tracing"
+          <img src="img/woodsland.png"
+                alt="Teak Plantation"
                 class="project-image">
           <div class="project-overlay">
-            <a href="http://safemap.daystargeodata.com/index2.html"
-                target="_blank"
+            <a href="#"
                 class="view-btn flex items-center">
               View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
             </a>
@@ -935,20 +965,50 @@
         </div>
         <div class="p-6 flex-grow">
           <div class="flex justify-between items-start mb-3">
-            <h3 class="text-xl font-bold">COVID-19 Contact Tracing</h3>
-            <span class="tag-health text-xs px-2.5 py-0.5 rounded-full">Public Health</span>
+            <h3 class="text-xl font-bold">Gumani Teak Plantation Mapping</h3>
+            <span class="tag-forestry text-xs px-2.5 py-0.5 rounded-full">Forestry</span>
           </div>
           <p class="text-gray-600 mb-4">
-            Developed a comprehensive web mapping solution for the Ghana Institution of Surveyors.
+            Mapped all trees above 4 feet with diameter ≥40cm in the Teak Plantation Reserve for Mulch Company Limited.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Leaflet.js</span>
-            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geoserver</span>
-            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Data Visualization</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Resource Inventory</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Boundary Survey</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Web GIS</span>
           </div>
         </div>
       </div>
-
+      
+      <!-- African Union SAATM Project -->
+    <div class="project-card">
+      <div class="relative">
+        <img src="img/saatm.jpg"  <!-- You'll need to add this image -->
+             alt="SAATM 2063 Animation"
+             class="project-image">
+        <div class="project-overlay">
+          <a href="#"  <!-- Add link if available -->
+             class="view-btn flex items-center">
+            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+          </a>
+        </div>
+      </div>
+      <div class="p-6 flex-grow">
+        <div class="flex justify-between items-start mb-3">
+          <h3 class="text-xl font-bold">SAATM 2063 Launch Animation</h3>
+          <span class="tag-government text-xs px-2.5 py-0.5 rounded-full">African Union</span>
+        </div>
+        <p class="text-gray-600 mb-4">
+          Conceptualized and produced a dynamic airline route animation using great-circle paths to visually represent the pan-African vision of the Single African Air Transport Market 2063 for the official launch event.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Animation</span>
+          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Great-circle Mapping</span>
+          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Agenda 2063</span>
+          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Visual Storytelling</span>
+        </div>
+      </div>
+    </div>
+      
       <!-- Data Management System -->
       <div class="project-card">
         <div class="relative">
