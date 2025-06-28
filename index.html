@@ -484,7 +484,7 @@
                 <i class="fas fa-map-marker-alt text-green-600 text-2xl mr-3"></i>
                 <div>
                   <h3 class="font-bold">Location</h3>
-                  <p class="text-sm">Accra, Ghana</p>
+                  <p class="text-sm">Kasoa, Ghana</p>
                   <p class="text-sm">Available Worldwide</p>
                 </div>
               </div>
@@ -971,6 +971,11 @@
         </div>
       </div>
     </div>
+        <!-- View All Button -->
+    <div class="text-center mt-10">
+      <button id="view-all-btn" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg flex items-center mx-auto">
+        View All Projects <i class="fas fa-chevron-down ml-2"></i>
+      </button>
       </div>
     </section>
     
@@ -1153,7 +1158,7 @@
                 </div>
                 <div>
                   <h4 class="font-semibold text-lg">Location</h4>
-                  <p>Accra, Ghana</p>
+                  <p>Kasoa, Ghana</p>
                 </div>
               </div>
             </div>
@@ -1246,7 +1251,7 @@
             </li>
             <li class="flex items-start">
               <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-200"></i>
-              <span>Accra, Ghana</span>
+              <span>Kasoa, Ghana</span>
             </li>
           </ul>
         </div>
@@ -1478,6 +1483,24 @@
       card.addEventListener('mouseleave', () => {
         card.style.transform = 'translateY(0)';
       });
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const viewAllBtn = document.getElementById('view-all-btn');
+      const remainingProjects = document.getElementById('remaining-projects');
+      
+      if (viewAllBtn && remainingProjects) {
+        viewAllBtn.addEventListener('click', function() {
+          remainingProjects.classList.toggle('hidden');
+          
+          if (remainingProjects.classList.contains('hidden')) {
+            viewAllBtn.innerHTML = 'View All Projects <i class="fas fa-chevron-down ml-2"></i>';
+          } else {
+            viewAllBtn.innerHTML = 'Show Less <i class="fas fa-chevron-up ml-2"></i>';
+          }
+        });
+      }
     });
   </script>
 </body>
