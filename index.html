@@ -612,386 +612,379 @@
 
     <!-- Projects Section -->
     <section id="projects" class="mb-20">
-      <div class="flex items-center mb-10">
-        <div class="section-icon">
-          <i class="fas fa-project-diagram text-2xl"></i>
+    <div class="flex items-center mb-10">
+      <div class="section-icon">
+        <i class="fas fa-project-diagram text-2xl"></i>
+      </div>
+      <div>
+        <h2 class="text-3xl font-bold text-gray-800">Project Portfolio</h2>
+        <p class="text-gray-600 mt-2">Showcasing my innovative geospatial solutions</p>
+      </div>
+    </div>
+    
+    <!-- Initial Projects Container (first 6 projects) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="initial-projects">
+      <!-- Silapha Web Map Project -->
+      <div class="project-card">
+        <div class="relative">
+          <img src="img/silapha.png" 
+               alt="Silapha Web Map" 
+               class="project-image">
+          <div class="project-overlay">
+            <a href="https://geo.silapha.com/silapha_map/" 
+               target="_blank" 
+               class="view-btn flex items-center">
+              View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+            </a>
+          </div>
         </div>
-        <div>
-          <h2 class="text-3xl font-bold text-gray-800">Project Portfolio</h2>
-          <p class="text-gray-600 mt-2">Showcasing my innovative geospatial solutions</p>
+        <div class="p-6 flex-grow">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="text-xl font-bold">Silapha Enterprise Web Map</h3>
+            <span class="tag-government text-xs px-2.5 py-0.5 rounded-full">Enterprise GIS</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Developed and managed Silapha's comprehensive web mapping solution for spatial data visualization and analysis.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geoserver</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">3D Modeling</span>
+          </div>
         </div>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Silapha Web Map Project -->
-        <div class="project-card">
-          <div class="relative">
-            <img src="img/silapha.png" 
-                 alt="Silapha Web Map" 
-                 class="project-image">
-            <div class="project-overlay">
-              <a href="https://geo.silapha.com/silapha_map/" 
-                 target="_blank" 
-                 class="view-btn flex items-center">
-                View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-              </a>
-            </div>
-          </div>
-          <div class="p-6 flex-grow">
-            <div class="flex justify-between items-start mb-3">
-              <h3 class="text-xl font-bold">Silapha Enterprise Web Map</h3>
-              <span class="tag-government text-xs px-2.5 py-0.5 rounded-full">Enterprise GIS</span>
-            </div>
-            <p class="text-gray-600 mb-4">
-              Developed and managed Silapha's comprehensive web mapping solution for spatial data visualization and analysis. Implemented Geoserver layers, managed spatial data in 3D, and created flood analysis models using QGIS and OSWAT.
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geoserver</span>
-              <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
-              <span class="text-xs bg-gray-100 px-2 py-1 rounded">3D Modeling</span>
-              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Flood Analysis</span>
-            </div>
+      <!-- Cocoa Management System -->
+      <div class="project-card">
+        <div class="relative">
+          <img src="img/cms.jpg"
+                alt="Cocoa Farms"
+                class="project-image">
+          <div class="project-overlay">
+            <a href="#" class="view-btn flex items-center">
+              Case Study <i class="fas fa-arrow-right ml-2 text-sm"></i>
+            </a>
           </div>
         </div>
-        
-        <!-- Cocoa Management System -->
-        <div class="project-card">
-          <div class="relative">
-            <img src="img/cms.jpg"
-                  alt="Cocoa Farms"
-                  class="project-image">
-            <div class="project-overlay">
-              <a href="#" class="view-btn flex items-center">
-                Case Study <i class="fas fa-arrow-right ml-2 text-sm"></i>
-              </a>
-            </div>
+        <div class="p-6 flex-grow">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="text-xl font-bold">Cocoa Farm Survey System</h3>
+            <span class="tag-agriculture text-xs px-2.5 py-0.5 rounded-full">Agriculture</span>
           </div>
-          <div class="p-6 flex-grow">
-            <div class="flex justify-between items-start mb-3">
-              <h3 class="text-xl font-bold">Cocoa Farm Survey System</h3>
-              <span class="tag-agriculture text-xs px-2.5 py-0.5 rounded-full">Agriculture</span>
-            </div>
-            <p class="text-gray-600 mb-4">
-              Conducted comprehensive field surveys of cocoa farms for Ghana Cocoa Board, collecting spatial data for integration into the cocoa management system's geodatabase to enhance agricultural planning and resource management.
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Field Survey</span>
-              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Cartography</span>
-              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geodatabase</span>
-              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Agriculture</span>
-            </div>
+          <p class="text-gray-600 mb-4">
+            Conducted comprehensive field surveys of cocoa farms for Ghana Cocoa Board, collecting spatial data.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Field Survey</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Cartography</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Agriculture</span>
           </div>
         </div>
+      </div>
     
-    <!-- Road Traffic Accident Data Collection App -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/traffic.png"
-              alt="Traffic Accident App"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="http://daystargeodata.com:8980/Safecity/"
-              target="_blank"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
+      <!-- Road Traffic Accident Data Collection App -->
+      <div class="project-card">
+        <div class="relative">
+          <img src="img/traffic.png"
+                alt="Traffic Accident App"
+                class="project-image">
+          <div class="project-overlay">
+            <a href="http://daystargeodata.com:8980/Safecity/"
+                target="_blank"
+                class="view-btn flex items-center">
+              View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+            </a>
+          </div>
+        </div>
+        <div class="p-6 flex-grow">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="text-xl font-bold">Road Traffic Accident Data Collection</h3>
+            <span class="tag-transport text-xs px-2.5 py-0.5 rounded-full">Transport</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Developed a mobile app for road traffic accident data collection with web map visualization of accident locations.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Mobile App</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Web Mapping</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geodatabase</span>
+          </div>
         </div>
       </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">Road Traffic Accident Data Collection</h3>
-          <span class="tag-transport text-xs px-2.5 py-0.5 rounded-full">Transport</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Developed a mobile app for road traffic accident data collection with web map visualization of accident locations. Designed and managed the geodatabase for reported cases, enabling spatial analysis of accident hotspots and patterns.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Mobile App</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Web Mapping</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geodatabase</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
-        </div>
-      </div>
-    </div>
 
-    <!-- Gumani Teak Plantation Resource Mapping -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/woodsland.png"
-              alt="Teak Plantation"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="#"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
+      <!-- Gumani Teak Plantation Resource Mapping -->
+      <div class="project-card">
+        <div class="relative">
+          <img src="img/woodsland.png"
+                alt="Teak Plantation"
+                class="project-image">
+          <div class="project-overlay">
+            <a href="#"
+                class="view-btn flex items-center">
+              View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+            </a>
+          </div>
+        </div>
+        <div class="p-6 flex-grow">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="text-xl font-bold">Gumani Teak Plantation Mapping</h3>
+            <span class="tag-forestry text-xs px-2.5 py-0.5 rounded-full">Forestry</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Mapped all trees above 4 feet with diameter ≥40cm in the Teak Plantation Reserve for Mulch Company Limited.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Resource Inventory</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Boundary Survey</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Web GIS</span>
+          </div>
         </div>
       </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">Gumani Teak Plantation Mapping</h3>
-          <span class="tag-forestry text-xs px-2.5 py-0.5 rounded-full">Forestry</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Mapped all trees above 4 feet with diameter ≥40cm in the Teak Plantation Reserve for Mulch Company Limited. Conducted boundary surveys and developed a web map for resource management and planning purposes.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Resource Inventory</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Boundary Survey</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Web GIS</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Field Data Collection</span>
-        </div>
-      </div>
-    </div>
 
-    <!-- Kokrokoo Charities Road Maps -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/kokrokoo_ga.jpeg"
-              alt="Road Maps"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="#"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
+      <!-- Kokrokoo Charities Road Maps -->
+      <div class="project-card">
+        <div class="relative">
+          <img src="img/kokrokoo_ga.jpeg"
+                alt="Road Maps"
+                class="project-image">
+          <div class="project-overlay">
+            <a href="#"
+                class="view-btn flex items-center">
+              View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+            </a>
+          </div>
+        </div>
+        <div class="p-6 flex-grow">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="text-xl font-bold">Spin for A Cause Road Maps</h3>
+            <span class="tag-community text-xs px-2.5 py-0.5 rounded-full">Community</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Provided GIS consultancy for Kokrokoo Charities' Spin for A Cause project by designing detailed directional road maps.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Route Planning</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Cartography</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Event Mapping</span>
+          </div>
         </div>
       </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">Spin for A Cause Road Maps</h3>
-          <span class="tag-community text-xs px-2.5 py-0.5 rounded-full">Community</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Provided GIS consultancy for Kokrokoo Charities' Spin for A Cause project by designing detailed directional road maps. Created optimized routes and navigation aids to support the charity cycling event across multiple locations.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Route Planning</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Cartography</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Event Mapping</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
-        </div>
-      </div>
-    </div>
 
-    <!-- Legon Botanical Gardens Landscape Maps -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/legon.png"
-              alt="Botanical Gardens"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="#"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
+      <!-- Legon Botanical Gardens Landscape Maps -->
+      <div class="project-card">
+        <div class="relative">
+          <img src="img/legon.png"
+                alt="Botanical Gardens"
+                class="project-image">
+          <div class="project-overlay">
+            <a href="#"
+                class="view-btn flex items-center">
+              View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+            </a>
+          </div>
         </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">Botanical Gardens Landscape Maps</h3>
-          <span class="tag-tourism text-xs px-2.5 py-0.5 rounded-full">Tourism</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Designed static and web landscape maps for Legon and KNUST Botanical Gardens for Mulch Company. Conducted topographical surveys and created detailed maps showing vegetation, pathways, and points of interest for visitor navigation.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Landscape Design</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Topographical Survey</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Cartography</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Web GIS</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Liberia Digital Addressing System -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/adasl.png"
-              alt="Digital Addressing"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="#"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
-        </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">Liberia Digital Addressing (ADASL)</h3>
-          <span class="tag-government text-xs px-2.5 py-0.5 rounded-full">Government</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Project managed the Authoritative Digital Addressing System for Liberia (ADASL). Designed the spatial database and generated unique digital addresses for all buildings using PostgreSQL scripts and satellite imagery. Supervised GIS team in digitizing structures.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">PostgreSQL</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Addressing System</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Project Management</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Group Vivendi Africa Geomarketing -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/geomarket.png"
-              alt="Geomarketing"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="#"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
-        </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">Geomarketing Analysis</h3>
-          <span class="tag-business text-xs px-2.5 py-0.5 rounded-full">Business</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Led geomarketing team at Group Vivendi Africa, overseeing market feasibility studies, territorial assessments, and route optimization. Developed standardized qualification tools and managed spatial data collection for infrastructure projects.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Market Analysis</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Route Optimization</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Team Leadership</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS Plugins</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Adoko Farms Project -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/adoko.jpeg"
-              alt="Adoko Farms"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="#"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
-        </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">Adoko Farms Landscape Design</h3>
-          <span class="tag-agriculture text-xs px-2.5 py-0.5 rounded-full">Agriculture</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Designed agricultural and recreational landscape maps using GIS technology for Adoko Farms Limited. Conducted topographic surveys and captured aerial imagery with drones for suitability analysis, creating comprehensive plans for optimal land use and resource allocation.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Drone Survey</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Topographic Analysis</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Landscape Design</span>
+        <div class="p-6 flex-grow">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="text-xl font-bold">Botanical Gardens Landscape Maps</h3>
+            <span class="tag-tourism text-xs px-2.5 py-0.5 rounded-full">Tourism</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Designed static and web landscape maps for Legon and KNUST Botanical Gardens for Mulch Company.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Landscape Design</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Topographical Survey</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Cartography</span>
+          </div>
         </div>
       </div>
     </div>
     
-    <!-- National Railway Asset Information System -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/railway.png"
-              alt="Railway Asset System"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="https://railmap.daystargeodata.com/"
-              target="_blank"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
+    <!-- Remaining Projects Container (hidden initially) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden" id="remaining-projects">
+      <!-- Liberia Digital Addressing System -->
+      <div class="project-card">
+        <div class="relative">
+          <img src="img/adasl.png"
+                alt="Digital Addressing"
+                class="project-image">
+          <div class="project-overlay">
+            <a href="#"
+                class="view-btn flex items-center">
+              View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+            </a>
+          </div>
         </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">National Railway Asset System</h3>
-          <span class="tag-infrastructure text-xs px-2.5 py-0.5 rounded-full">Infrastructure</span>
+        <div class="p-6 flex-grow">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="text-xl font-bold">Liberia Digital Addressing (ADASL)</h3>
+            <span class="tag-government text-xs px-2.5 py-0.5 rounded-full">Government</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Project managed the Authoritative Digital Addressing System for Liberia (ADASL).
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">PostgreSQL</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Addressing System</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Project Management</span>
+          </div>
         </div>
-        <p class="text-gray-600 mb-4">
-          Designed the geodatabase and web map visualization system for Ghana Railway Authority, integrating field-generated data with existing datasets to enhance monitoring and evaluation of national railway assets.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">PostgreSQL</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Web Mapping</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geodatabase</span>
-        </div>
-      </div>
-    </div>
-    
-    <!-- COVID-19 Contact Tracing -->
-    <div class="project-card">
-      <div class="relative">
-        <img src="img/covid.png"
-              alt="COVID-19 Tracing"
-              class="project-image">
-        <div class="project-overlay">
-          <a href="http://safemap.daystargeodata.com/index2.html"
-              target="_blank"
-              class="view-btn flex items-center">
-            View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-          </a>
-        </div>
-      </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">COVID-19 Contact Tracing</h3>
-          <span class="tag-health text-xs px-2.5 py-0.5 rounded-full">Public Health</span>
-        </div>
-        <p class="text-gray-600 mb-4">
-          Developed a comprehensive web mapping solution for the Ghana Institution of Surveyors to visualize COVID-19 cases and potential contact tracing data, featuring a managed geodatabase for real-time pandemic monitoring.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Leaflet.js</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geoserver</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Data Visualization</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geodatabase</span>
-        </div>
-      </div>
       </div>
 
-        <div class="project-card">
-      <div class="relative">
-        <img src="img/gis_rev.png"
-             alt="Data Management System"
-             class="project-image">
-        <div class="project-overlay">
-          <a href="#" 
-             class="view-btn flex items-center">
-            Case Study <i class="fas fa-arrow-right ml-2 text-sm"></i>
-          </a>
+      <!-- Group Vivendi Africa Geomarketing -->
+      <div class="project-card">
+        <div class="relative">
+          <img src="img/geomarket.png"
+                alt="Geomarketing"
+                class="project-image">
+          <div class="project-overlay">
+            <a href="#"
+                class="view-btn flex items-center">
+              View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+            </a>
+          </div>
+        </div>
+        <div class="p-6 flex-grow">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="text-xl font-bold">Geomarketing Analysis</h3>
+            <span class="tag-business text-xs px-2.5 py-0.5 rounded-full">Business</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Led geomarketing team at Group Vivendi Africa, overseeing market feasibility studies.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Market Analysis</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Route Optimization</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Team Leadership</span>
+          </div>
         </div>
       </div>
-      <div class="p-6 flex-grow">
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold">Data Management System Optimization</h3>
-          <span class="tag-infrastructure text-xs px-2.5 py-0.5 rounded-full">Enterprise Systems</span>
+
+      <!-- Adoko Farms Project -->
+      <div class="project-card">
+        <div class="relative">
+          <img src="img/adoko.jpeg"
+                alt="Adoko Farms"
+                class="project-image">
+          <div class="project-overlay">
+            <a href="#"
+                class="view-btn flex items-center">
+              View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+            </a>
+          </div>
         </div>
-        <p class="text-gray-600 mb-4">
-          Transformed data operations at Survtech Engineering by redesigning workflows, implementing training programs, and establishing quality control processes that enhanced team productivity and data reliability across collection and revenue teams.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Workflow Optimization</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Team Training</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Data Analysis</span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded">Process Management</span>
+        <div class="p-6 flex-grow">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="text-xl font-bold">Adoko Farms Landscape Design</h3>
+            <span class="tag-agriculture text-xs px-2.5 py-0.5 rounded-full">Agriculture</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Designed agricultural and recreational landscape maps using GIS technology for Adoko Farms Limited.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Drone Survey</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Topographic Analysis</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- National Railway Asset Information System -->
+      <div class="project-card">
+        <div class="relative">
+          <img src="img/railway.png"
+                alt="Railway Asset System"
+                class="project-image">
+          <div class="project-overlay">
+            <a href="https://railmap.daystargeodata.com/"
+                target="_blank"
+                class="view-btn flex items-center">
+              View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+            </a>
+          </div>
+        </div>
+        <div class="p-6 flex-grow">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="text-xl font-bold">National Railway Asset System</h3>
+            <span class="tag-infrastructure text-xs px-2.5 py-0.5 rounded-full">Infrastructure</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Designed the geodatabase and web map visualization system for Ghana Railway Authority.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">QGIS</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">PostgreSQL</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Web Mapping</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- COVID-19 Contact Tracing -->
+      <div class="project-card">
+        <div class="relative">
+          <img src="img/covid.png"
+                alt="COVID-19 Tracing"
+                class="project-image">
+          <div class="project-overlay">
+            <a href="http://safemap.daystargeodata.com/index2.html"
+                target="_blank"
+                class="view-btn flex items-center">
+              View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+            </a>
+          </div>
+        </div>
+        <div class="p-6 flex-grow">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="text-xl font-bold">COVID-19 Contact Tracing</h3>
+            <span class="tag-health text-xs px-2.5 py-0.5 rounded-full">Public Health</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Developed a comprehensive web mapping solution for the Ghana Institution of Surveyors.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Leaflet.js</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Geoserver</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Data Visualization</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Management System -->
+      <div class="project-card">
+        <div class="relative">
+          <img src="img/gis_rev.png"
+               alt="Data Management System"
+               class="project-image">
+          <div class="project-overlay">
+            <a href="#" 
+               class="view-btn flex items-center">
+              Case Study <i class="fas fa-arrow-right ml-2 text-sm"></i>
+            </a>
+          </div>
+        </div>
+        <div class="p-6 flex-grow">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="text-xl font-bold">Data Management System Optimization</h3>
+            <span class="tag-infrastructure text-xs px-2.5 py-0.5 rounded-full">Enterprise Systems</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Transformed data operations at Survtech Engineering by redesigning workflows and implementing training programs.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Workflow Optimization</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Team Training</span>
+            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Data Analysis</span>
+          </div>
         </div>
       </div>
     </div>
-        <!-- View All Button -->
     <div class="text-center mt-10">
       <button id="view-all-btn" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg flex items-center mx-auto">
         View All Projects <i class="fas fa-chevron-down ml-2"></i>
       </button>
-      </div>
-    </section>
-    
+    </div>
+  </section>
+      
     <!-- Experience Section -->
     <section id="experience" class="mb-20">
       <div class="flex items-center mb-10">
@@ -1289,164 +1282,164 @@
 
   <script>
     // Initialize Leaflet Map
-  document.addEventListener('DOMContentLoaded', function() {
-    // Coordinates for Kasoa, Ghana (your location)
-    const myLocation = [5.5415660, -0.4265301];
+    document.addEventListener('DOMContentLoaded', function() {
+      // Coordinates for Kasoa, Ghana (your location)
+      const myLocation = [5.5415660, -0.4265301];
+      
+      // Client locations with company info and image paths
+      const clientLocations = [
+        {
+          coords: [5.6800132, -0.1302583],
+          name: "GIS Data Management",
+          company: "Henson Geodata Technologies Ltd",
+          logo: "img/hgt.png",
+          projectImage: "img/silapha.png"
+        },
+        {
+          coords: [5.5515610, -0.2110508],
+          name: "Cocoa Management System",
+          company: "Ghana Cocoa Board",
+          logo: "img/cocobod.png",
+          projectImage: "img/cms.jpg"
+        },
+        {
+          coords: [5.6001106, -0.1936414],
+          name: "Railway Asset Management System",
+          company: "Ghana Railway Authority",
+          logo: "img/raillogo.png",
+          projectImage: "img/railway.png"
+        },
+        {
+          coords: [5.6669992, -0.1874869],
+          name: "Mulch Company",
+          company: "Legon Botanical Gardens",
+          logo: "img/lbg.png",
+          projectImage: "img/legon.png"
+        },
+        {
+          coords: [5.5674840, -0.1464812],
+          name: "GIS Engineer",
+          company: "Baseline Solutions Limited",
+          logo: "img/baseline.png",
+          projectImage: "img/base.jpeg"
+        },
+         {
+          coords: [5.5509023, -0.2109699],
+          name: "Land Management System",
+          company: "SSNIT",
+          logo: "img/ssnitlogo.png",
+          projectImage: "img/ssnit.jpeg"
+        },
+        {
+          coords: [5.5577632, -0.2122096],
+          name: "Geomarketing Analysis",
+          company: "Group Vivendi Africa Ghana",
+          logo: "img/gva.png",
+          projectImage: "img/geomarket.png"
+        }   
+      ];
+      
+      // Create map centered on all locations
+      const map = L.map('map', {
+        zoomControl: false,
+        preferCanvas: true // Better performance for many markers
+      }).setView(myLocation, 10);
     
-    // Client locations with company info and image paths
-    const clientLocations = [
-      {
-        coords: [5.6800132, -0.1302583],
-        name: "GIS Data Management",
-        company: "Henson Geodata Technologies Ltd",
-        logo: "img/hgt.png",
-        projectImage: "img/silapha.png"
-      },
-      {
-        coords: [5.5515610, -0.2110508],
-        name: "Cocoa Management System",
-        company: "Ghana Cocoa Board",
-        logo: "img/cocobod.png",
-        projectImage: "img/cms.jpg"
-      },
-      {
-        coords: [5.6001106, -0.1936414],
-        name: "Railway Asset Management System",
-        company: "Ghana Railway Authority",
-        logo: "img/raillogo.png",
-        projectImage: "img/railway.png"
-      },
-      {
-        coords: [5.6669992, -0.1874869],
-        name: "Mulch Company",
-        company: "Legon Botanical Gardens",
-        logo: "img/lbg.png",
-        projectImage: "img/legon.png"
-      },
-      {
-        coords: [5.5674840, -0.1464812],
-        name: "GIS Engineer",
-        company: "Baseline Solutions Limited",
-        logo: "img/baseline.png",
-        projectImage: "img/base.jpeg"
-      },
-       {
-        coords: [5.5509023, -0.2109699],
-        name: "Land Management System",
-        company: "SSNIT",
-        logo: "img/ssnitlogo.png",
-        projectImage: "img/ssnit.jpeg"
-      },
-      {
-        coords: [5.5577632, -0.2122096],
-        name: "Geomarketing Analysis",
-        company: "Group Vivendi Africa Ghana",
-        logo: "img/gva.png",
-        projectImage: "img/geomarket.png"
-      }   
-    ];
-    
-    // Create map centered on all locations
-    const map = L.map('map', {
-      zoomControl: false,
-      preferCanvas: true // Better performance for many markers
-    }).setView(myLocation, 10);
-  
-    // Add zoom control with custom position
-    L.control.zoom({
-      position: 'topright'
-    }).addTo(map);
-    
-    // Add tile layer (OpenStreetMap)
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      maxZoom: 18,
-      minZoom: 8
-    }).addTo(map);
-    
-    // Add your location marker with profile image
-    const myIcon = L.divIcon({
-      className: 'custom-marker my-location',
-      iconSize: [48, 48], // Slightly larger for your location
-      popupAnchor: [0, -24] // Position popup above marker
-    });
-    
-    const yourMarker = L.marker(myLocation, {icon: myIcon}).addTo(map)
-      .bindPopup(`
-        <div class="popup-header">Justice Obiri-Darko</div>
-        <div class="popup-company">Geospatial Specialist</div>
-        <img src="img/profile.png" class="popup-image" alt="Justice Obiri-Darko">
-        <div><i class="fas fa-map-marker-alt mr-2"></i>Kasoa, Ghana</div>
-        <div><i class="fas fa-phone mr-2"></i>+233 55 076 7713</div>
-      `, {
-        maxWidth: 300,
-        minWidth: 250
-      })
-      .openPopup();
-    
-    // Add client markers with company logos
-    clientLocations.forEach(client => {
-      const clientIcon = L.divIcon({
-        className: 'custom-marker client-marker',
-        html: `<img src="${client.logo}" class="marker-image" alt="${client.company} Logo">`,
-        iconSize: [40, 40],
-        popupAnchor: [0, -20]
+      // Add zoom control with custom position
+      L.control.zoom({
+        position: 'topright'
+      }).addTo(map);
+      
+      // Add tile layer (OpenStreetMap)
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 18,
+        minZoom: 8
+      }).addTo(map);
+      
+      // Add your location marker with profile image
+      const myIcon = L.divIcon({
+        className: 'custom-marker my-location',
+        iconSize: [48, 48], // Slightly larger for your location
+        popupAnchor: [0, -24] // Position popup above marker
       });
       
-      L.marker(client.coords, {icon: clientIcon}).addTo(map)
+      const yourMarker = L.marker(myLocation, {icon: myIcon}).addTo(map)
         .bindPopup(`
-          <div class="popup-header">${client.name}</div>
-          <div class="popup-company">${client.company}</div>
-          <img src="${client.projectImage}" class="popup-image" alt="${client.name} Project">
-          <div><i class="fas fa-map-marker-alt mr-2"></i>Project Location</div>
-          <div><i class="fas fa-calendar-alt mr-2"></i>Completed: ${new Date().getFullYear() - Math.floor(Math.random() * 3) - 1}</div>
+          <div class="popup-header">Justice Obiri-Darko</div>
+          <div class="popup-company">Geospatial Specialist</div>
+          <img src="img/profile.png" class="popup-image" alt="Justice Obiri-Darko">
+          <div><i class="fas fa-map-marker-alt mr-2"></i>Kasoa, Ghana</div>
+          <div><i class="fas fa-phone mr-2"></i>+233 55 076 7713</div>
         `, {
           maxWidth: 300,
           minWidth: 250
+        })
+        .openPopup();
+      
+      // Add client markers with company logos
+      clientLocations.forEach(client => {
+        const clientIcon = L.divIcon({
+          className: 'custom-marker client-marker',
+          html: `<img src="${client.logo}" class="marker-image" alt="${client.company} Logo">`,
+          iconSize: [40, 40],
+          popupAnchor: [0, -20]
         });
-    });
+        
+        L.marker(client.coords, {icon: clientIcon}).addTo(map)
+          .bindPopup(`
+            <div class="popup-header">${client.name}</div>
+            <div class="popup-company">${client.company}</div>
+            <img src="${client.projectImage}" class="popup-image" alt="${client.name} Project">
+            <div><i class="fas fa-map-marker-alt mr-2"></i>Project Location</div>
+            <div><i class="fas fa-calendar-alt mr-2"></i>Completed: ${new Date().getFullYear() - Math.floor(Math.random() * 3) - 1}</div>
+          `, {
+            maxWidth: 300,
+            minWidth: 250
+          });
+      });
+      
+      // Add circle to highlight your location
+      L.circle(myLocation, {
+        color: '#1a73e8',
+        fillColor: '#1a73e8',
+        fillOpacity: 0.2,
+        radius: 1500 // Slightly larger radius
+      }).addTo(map);
+      
+      // Fit map to show all markers with padding
+      const bounds = L.latLngBounds([myLocation]);
+      clientLocations.forEach(client => bounds.extend(client.coords));
+      map.fitBounds(bounds, {
+        padding: [50, 50],
+        maxZoom: 12 // Don't zoom in too close
+      });
     
-    // Add circle to highlight your location
-    L.circle(myLocation, {
-      color: '#1a73e8',
-      fillColor: '#1a73e8',
-      fillOpacity: 0.2,
-      radius: 1500 // Slightly larger radius
-    }).addTo(map);
+      // Add scale control
+      L.control.scale({
+        position: 'bottomleft',
+        metric: true,
+        imperial: false
+      }).addTo(map);
     
-    // Fit map to show all markers with padding
-    const bounds = L.latLngBounds([myLocation]);
-    clientLocations.forEach(client => bounds.extend(client.coords));
-    map.fitBounds(bounds, {
-      padding: [50, 50],
-      maxZoom: 12 // Don't zoom in too close
-    });
-  
-    // Add scale control
-    L.control.scale({
-      position: 'bottomleft',
-      metric: true,
-      imperial: false
-    }).addTo(map);
-  
-    // Add custom button to return to your location
-    const locateControl = L.control({position: 'topright'});
-    locateControl.onAdd = function(map) {
-      const div = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
-      div.innerHTML = `<a href="#" title="Return to my location"><i class="fas fa-home"></i></a>`;
-      div.onclick = () => {
-        map.flyTo(myLocation, 12, {
-          duration: 1,
-          easeLinearity: 0.25
-        });
-        yourMarker.openPopup();
-        return false;
+      // Add custom button to return to your location
+      const locateControl = L.control({position: 'topright'});
+      locateControl.onAdd = function(map) {
+        const div = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
+        div.innerHTML = `<a href="#" title="Return to my location"><i class="fas fa-home"></i></a>`;
+        div.onclick = () => {
+          map.flyTo(myLocation, 12, {
+            duration: 1,
+            easeLinearity: 0.25
+          });
+          yourMarker.openPopup();
+          return false;
+        };
+        return div;
       };
-      return div;
-    };
-    locateControl.addTo(map);
-  });
-  
+      locateControl.addTo(map);
+    });
+    
     // Mobile menu toggle
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -1497,8 +1490,8 @@
         card.style.transform = 'translateY(0)';
       });
     });
-  </script>
-  <script>
+
+    // Projects View All Functionality
     document.addEventListener('DOMContentLoaded', function() {
       const viewAllBtn = document.getElementById('view-all-btn');
       const remainingProjects = document.getElementById('remaining-projects');
@@ -1509,6 +1502,8 @@
           
           if (remainingProjects.classList.contains('hidden')) {
             viewAllBtn.innerHTML = 'View All Projects <i class="fas fa-chevron-down ml-2"></i>';
+            // Smooth scroll to projects section when hiding
+            document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
           } else {
             viewAllBtn.innerHTML = 'Show Less <i class="fas fa-chevron-up ml-2"></i>';
           }
